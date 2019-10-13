@@ -1,0 +1,18 @@
+import * as express from "express";
+import * as bodyParser from  "body-parser";
+import {createConnection} from "typeorm";
+import {database} from "../../common/db_config";
+import {notificationRoutes} from "./routes/notificationRoutes";
+import {NotificationControllers} from "./controllers/notificationControllers";
+import {NotificationManager} from "./dbManager/notificationManager";
+import {Notification} from "./entity/notification";
+
+const app = express();
+app.use(bodyParser.json());
+
+createConnection(database).then(() => {
+    const notify_db_manager = new NotificationManager(Notification);
+    const notify_controller = new NotificationControllers(notify_db_manager);
+    notificationRoutes(app, notify_controller);
+    app.listen(3004);
+});
