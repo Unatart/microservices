@@ -11,15 +11,15 @@ export const routes = (app, controllers) => {
 
     app.post("/user/:id/stories/", controllers.createStoryByUser);
 
-    app.patch("/user/:id/stories/:id", controllers.updateStoryByUser);
+    app.patch("/user/:id/stories/:story_id", controllers.updateStoryByUser);
 
-    app.delete("/user/:id/stories/:id", controllers.deleteStoryByUser);
+    app.delete("/user/:id/stories/:story_id", controllers.deleteStoryByUser);
 
     app.get("/user/:id/favourites", controllers.getUserFavs);
 
-    app.post("/user/:id/stories/:id/favourites", controllers.makeStoryFavForUser);
+    app.post("/user/:id/stories/:story_id/favourites", controllers.makeStoryFavForUser);
 
-    app.delete("/user/:id/stories/:id/favourites", controllers.deleteStoryFromFavUser);
+    app.delete("/user/:id/stories/:story_id/favourites", controllers.deleteStoryFromFavUser);
 
     app.get("/user/:id/notifications", controllers.getUserNotifySettings);
 

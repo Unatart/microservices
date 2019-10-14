@@ -50,12 +50,35 @@ export class FavouritesControllers extends CommonControllers<FavouritesManager> 
         return res;
     };
 
-    public deleteFavourite = async (req: Request, res: Response) => {
+    public deleteFavouriteByQuery = async (req: Request, res: Response) => {
         try {
-            const fav_uuid = req.params.story_id;
+            const user_uuid = req.query.user_id;
+            const story_uuid = req.query.story_id;
 
-            if (this.uuid_regex.test(fav_uuid)) {
-                const result = await this.db_manager.deleteFav(fav_uuid);
+            if (this.uuid_regex.test(user_uuid) && this.uuid_regex.test(story_uuid)) {
+                const result = await this.db_manager.deleteFav(user_uuid, story_uuid);
+
+                res
+                    .status(200)
+                    .send(result);
+            } else {
+                res
+                    .status(400)
+                    .send(createError(CommonErrorMessages.UUID_INCORRECT));
+            }
+        } catch (error) {
+            res
+                .status(404)
+                .send(createError(error.message));
+        }
+    };
+
+    public deleteFavouritesByStory = async (req: Request, res: Response) => {
+        try {
+            const story_uuid = req.params.story_id;
+
+            if (this.uuid_regex.test(story_uuid)) {
+                const result = await this.db_manager.deleteFavStories(story_uuid);
 
                 res
                     .status(200)
@@ -70,5 +93,5 @@ export class FavouritesControllers extends CommonControllers<FavouritesManager> 
                 .status(404)
                 .send(createError(error.message));
         }
-    };
+    }
 }

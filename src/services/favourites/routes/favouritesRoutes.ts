@@ -3,5 +3,7 @@ export const favouritesRoutes = (app, fav_controller) => {
 
     app.post("/favourites", fav_controller.createFavourites);
 
-    app.delete("/favourites/:story_id", fav_controller.deleteFavourite);
+    app.delete("/favourites", fav_controller.deleteFavouriteByQuery);
+
+    app.delete("/favourites/:story_id", fav_controller.deleteFavouritesByStory);
 };

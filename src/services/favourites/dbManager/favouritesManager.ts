@@ -16,7 +16,18 @@ export class FavouritesManager extends CommonDbManager<Favourites> {
         return await this.repository.save(fav);
     }
 
-    public async deleteFav(id:string) {
-        return await this.repository.delete(id);
+    public async deleteFav(user_id:string, story_id:string) {
+        const result = await this.repository.findOne({where: {user_id: user_id, story_id: story_id}});
+
+        return await this.repository.delete(result);
+    }
+
+    public async deleteFavStories(story_id:string) {
+        return await this.repository
+            .createQueryBuilder()
+            .delete()
+            .from(Favourites)
+            .where({story_id: story_id})
+            .execute();
     }
 }

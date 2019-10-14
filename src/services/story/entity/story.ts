@@ -6,12 +6,9 @@ export class Story {
     id: string;
 
     @Column()
-    name: string;
-
-    @Column()
     theme: string;
-    
-    @Column()
+
+    @Column({type: "uuid"})
     author: string;
 
     @Column({type: "text"})

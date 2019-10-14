@@ -30,8 +30,8 @@ export class NotificationControllers extends CommonControllers<NotificationManag
     public createNotification = async (req: Request, res:Response) => {
         try {
             const user_uuid = req.body['user_id'];
-            const email:boolean = !!req.body['email'] || false;
-            const phone:boolean = !!req.body['phone'] || false;
+            const email:boolean = !!req.body['email'];
+            const phone:boolean = !!req.body['phone'];
 
             if (this.uuid_regex.test(user_uuid)) {
                 const result = await this.db_manager.createNotify(user_uuid, email, phone);
