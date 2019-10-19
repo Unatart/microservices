@@ -37,7 +37,8 @@ export function createServiceConnections() {
     const user_app = express();
     user_app.use(bodyParser.json());
 
-    createConnection(database).then(() => {
+    const user_database = {...database, schema:"user", entities: [User]};
+    createConnection(user_database).then(() => {
         const user_db_manager = new UserManager(User);
         const user_controller = new UserControllers(user_db_manager);
         userRoutes(user_app, user_controller);
@@ -47,7 +48,8 @@ export function createServiceConnections() {
     const story_app = express();
     story_app.use(bodyParser.json());
 
-    createConnection(database).then(() => {
+    const story_database = {...database, schema:"story", entities: [Story]};
+    createConnection(story_database).then(() => {
         const story_db_manager = new StoryManager(Story);
         const story_controller = new StoryControllers(story_db_manager);
         storyRoutes(story_app, story_controller);
@@ -57,7 +59,8 @@ export function createServiceConnections() {
     const fav_app = express();
     fav_app.use(bodyParser.json());
 
-    createConnection(database).then(() => {
+    const fav_database = {...database, schema:"fav", entities: [Favourites]};
+    createConnection(fav_database).then(() => {
         const fav_db_manager = new FavouritesManager(Favourites);
         const fav_controller = new FavouritesControllers(fav_db_manager);
         favouritesRoutes(fav_app, fav_controller);
@@ -67,7 +70,8 @@ export function createServiceConnections() {
     const not_app = express();
     not_app.use(bodyParser.json());
 
-    createConnection(database).then(() => {
+    const notify_database = {...database, schema:"notify", entities: [Notification]};
+    createConnection(notify_database).then(() => {
         const notify_db_manager = new NotificationManager(Notification);
         const notify_controller = new NotificationControllers(notify_db_manager);
         notificationRoutes(not_app, notify_controller);

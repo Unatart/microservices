@@ -10,10 +10,19 @@ services:
   - postgresql
 
 before_script:
-  - psql -c "create database test_micro_services;" -U postgres
-  - psql -c "create user unatart with encrypted password 'unatart';" -U postgres
-  - psql -c "grant all privileges on database test_micro_services to unatart;" -U postgres
-  - psql -c "create extension if not exist 'uuid-ossp';" -U postgres
+  - psql -c "create user unatart with encrypted password 'unatart';"
+  - psql -c "create database test_micro_services;"
+  - psql test_micro_services -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"
+  - psql -c "grant all privileges on database test_micro_services to unatart;"
+  - psql test_micro_services -U unatart -c "CREATE SCHEMA \"user\";"
+  - psql test_micro_services -U unatart -c "CREATE SCHEMA \"story\";"
+  - psql test_micro_services -U unatart -c "CREATE SCHEMA \"fav\";"
+  - psql test_micro_services -U unatart -c "CREATE SCHEMA \"notify\";"
+  # - psql test_micro_services -c "grant all privileges on all tables in schema \"user\" to unatart;"
+  # - psql test_micro_services -c "grant all privileges on all sequences in schema \"user\" to unatart;"
+  # - psql test_micro_services -c "grant all privileges on all tables in schema \"story\" to unatart;"
+  # - psql test_micro_services -c "grant all privileges on all tables in schema \"fav\" to unatart;"
+  # - psql test_micro_services -c "grant all privileges on all tables in schema \"notify\" to unatart;"
 
 install:
   - npm i
