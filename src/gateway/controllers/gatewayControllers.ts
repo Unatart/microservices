@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import * as fetch from "node-fetch";
-import {createError} from "../../common/commonError";
+import {CommonErrorMessages, createError} from "../../common/commonError";
 
 export class GatewayControllers {
     public async getAllStories(req: Request, res: Response) {
@@ -197,7 +197,7 @@ export class GatewayControllers {
                 headers: {'Content-Type': 'application/json'},
             });
 
-            const story_response = await fetch("http://localhost:3002/stories/" + req.params.id, {
+            const story_response = await fetch("http://localhost:3002/stories/" + req.params.story_id, {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
             });
@@ -262,7 +262,7 @@ export class GatewayControllers {
 
     public async deleteStoryFromFavUser(req: Request, res: Response) {
         try {
-            const notify_response = await fetch("http://localhost:3004/notifications?user_id=" + req.params.id + "&story_id=" + req.params.story_id, {
+            const notify_response = await fetch("http://localhost:3003/favourites/?user_id=" + req.params.id + "&story_id=" + req.params.story_id, {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
             });
@@ -302,6 +302,31 @@ export class GatewayControllers {
 
     public async updateNotifySettings(req: Request, res: Response) {
         try {
+            const user_response = await fetch("http://localhost:3001/users/" + req.params.id, {
+                method: 'get',
+                headers: {'Content-Type': 'application/json'},
+            });
+
+            const user_settings = await user_response.json();
+
+            if(!user_settings.email && !user_settings.phone) {
+                return res
+                    .send(400)
+                    .send(createError(CommonErrorMessages.USER_NO_SETTINGS));
+            }
+
+            if (!user_settings.email && req.body.email) {
+                return res
+                    .status(400)
+                    .send(createError(CommonErrorMessages.USER_NO_EMAIL));
+            }
+
+            if (!user_settings.phone && req.body.phone) {
+                return res
+                    .status(400)
+                    .send(createError(CommonErrorMessages.USER_NO_PHONE));
+            }
+
             const notify_response = await fetch("http://localhost:3004/notifications/" + req.params.id, {
                 method: 'patch',
                 body: JSON.stringify(req.body),

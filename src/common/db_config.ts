@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'develop') {
         "password": "unatart",
         "database": "micro_services",
         "entities": ["src/services/*/entity/*.js"],
-        "logging": ["error"],
+        "logging": ["error", "query"],
         "synchronize": true
     }
 }

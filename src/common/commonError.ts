@@ -4,6 +4,9 @@ export const enum CommonErrorMessages {
     INVALID_PASSWORD = "Invalid data",
     INVALID_USER_UUID = "No user with such id",
     INVALID_STORY_UUID = "No story with such uuid",
+    USER_NO_EMAIL = "No email field in this user instance",
+    USER_NO_PHONE = "No phone field in this user instance",
+    USER_NO_SETTINGS = "User should have email or phone to add notifications"
 }
 
 export function createError(msg) {

@@ -47,7 +47,7 @@ export class StoryControllers extends CommonControllers<StoryManager> {
 
     public createStory = async (req: Request, res: Response) => {
         try {
-            const result = this.db_manager.createStory(req.body);
+            const result = await this.db_manager.createStory(req.body);
             res
                 .status(201)
                 .send(result);
@@ -64,7 +64,7 @@ export class StoryControllers extends CommonControllers<StoryManager> {
         try {
             const story_uuid = req.params.id;
             if (this.uuid_regex.test(story_uuid)) {
-                const result = this.db_manager.updateStory(story_uuid, req.body);
+                const result = await this.db_manager.updateStory(story_uuid, req.body);
                 res
                     .status(200)
                     .send(result);
@@ -86,7 +86,7 @@ export class StoryControllers extends CommonControllers<StoryManager> {
         try {
             const story_uuid = req.params.id;
             if (this.uuid_regex.test(story_uuid)) {
-                const result = this.db_manager.deleteStory(story_uuid);
+                const result = await this.db_manager.deleteStory(story_uuid);
                 res
                     .status(200)
                     .send(result);
