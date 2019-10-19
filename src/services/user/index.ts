@@ -14,5 +14,7 @@ createConnection(database).then(() => {
     const user_db_manager = new UserManager(User);
     const user_controller = new UserControllers(user_db_manager);
     userRoutes(app, user_controller);
-    app.listen(3001);
+    app.listen(3001, () => {
+            console.log(`API REST running in http://localhost:${3001}`);
+    });
 });

@@ -9,7 +9,7 @@ export const routes = (app, controllers) => {
 
     app.patch("/user/:id", controllers.updateUserInfo);
 
-    app.post("/user/:id/stories/", controllers.createStoryByUser);
+    app.post("/user/:id/stories", controllers.createStoryByUser);
 
     app.patch("/user/:id/stories/:story_id", controllers.updateStoryByUser);
 

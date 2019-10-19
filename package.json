@@ -10,12 +10,15 @@
     "start_notification": "NODE_ENV=develop node src/services/notification/index.js",
     "start_favourites": "NODE_ENV=develop node src/services/favourites/index.js",
     "start": "node src/gateway/index.js",
-    "test": "TEST_PORT=3000 NODE_ENV=test mocha -r ts-node/register src/routes/routes.spec.ts -timeout 20000 --exit"
+    "test": "TEST_PORT=4000 NODE_ENV=test mocha -r ts-node/register tests/gateway.spec.ts -timeout 20000 --exit",
+    "coverage": "nyc npm test report --reporter=lcov --reporter=text"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^12.7.5",
+    "istanbul": "^0.4.5",
+    "nyc": "^14.1.1",
     "typescript": "^3.6.3"
   },
   "dependencies": {
@@ -28,17 +31,18 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "js-logger": "^1.6.0",
+    "lorem-ipsum": "^2.0.3",
     "mocha": "^6.2.0",
+    "node-fetch": "^2.6.0",
     "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.19",
+    "underscore": "^1.9.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
-    "webpack-watch-server": "^1.2.1",
-    "underscore": "^1.9.1",
-    "node-fetch": "^2.6.0"
+    "webpack-watch-server": "^1.2.1"
   }
 }

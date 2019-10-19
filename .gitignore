@@ -3,3 +3,5 @@
 .idea
 /src/entity/*.js
 /src/*.js
+/coverage
+/.nyc_output
