@@ -13,6 +13,7 @@ before_script:
   - psql -c "create database test_micro_services;" -U postgres
   - psql -c "create user unatart with encrypted password 'unatart';" -U postgres
   - psql -c "grant all privileges on database test_micro_services to unatart;" -U postgres
+  - psql -c "create extension if not exist 'uuid-ossp';" -U postgres
 
 install:
   - npm i
