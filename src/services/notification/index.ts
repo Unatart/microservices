@@ -10,7 +10,8 @@ import {Notification} from "./entity/notification";
 const app = express();
 app.use(bodyParser.json());
 
-createConnection(database).then(() => {
+const notify_database = {...database, schema:"notify", entities: [Notification]};
+createConnection(notify_database).then(() => {
     const notify_db_manager = new NotificationManager(Notification);
     const notify_controller = new NotificationControllers(notify_db_manager);
     notificationRoutes(app, notify_controller);

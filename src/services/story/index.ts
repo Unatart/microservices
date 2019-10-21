@@ -10,7 +10,8 @@ import {Story} from "./entity/story";
 const app = express();
 app.use(bodyParser.json());
 
-createConnection(database).then(() => {
+const story_database = {...database, schema:"story", entities: [Story]};
+createConnection(story_database).then(() => {
     const story_db_manager = new StoryManager(Story);
     const story_controller = new StoryControllers(story_db_manager);
     storyRoutes(app, story_controller);

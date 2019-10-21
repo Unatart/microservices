@@ -10,7 +10,8 @@ import {User} from "./entity/user";
 const app = express();
 app.use(bodyParser.json());
 
-createConnection(database).then(() => {
+const user_database = {...database, schema:"user", entities: [User]};
+createConnection(user_database).then(() => {
     const user_db_manager = new UserManager(User);
     const user_controller = new UserControllers(user_db_manager);
     userRoutes(app, user_controller);

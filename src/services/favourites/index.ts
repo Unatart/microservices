@@ -10,7 +10,8 @@ import {Favourites} from "./entity/favourites";
 const app = express();
 app.use(bodyParser.json());
 
-createConnection(database).then(() => {
+const fav_database = {...database, schema:"fav", entities: [Favourites]};
+createConnection(fav_database).then(() => {
     const fav_db_manager = new FavouritesManager(Favourites);
     const fav_controller = new FavouritesControllers(fav_db_manager);
     favouritesRoutes(app, fav_controller);

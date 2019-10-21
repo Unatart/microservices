@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'test') {
         password: "unatart",
         database: "test_micro_services",
         entities: ["src/services/*/entity/*.js"],
-        logging: ["error", "query"],
+        logging: ["error"],
         synchronize: true
     };
 }

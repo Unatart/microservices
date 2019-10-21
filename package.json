@@ -43,6 +43,7 @@
     "underscore": "^1.9.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
-    "webpack-watch-server": "^1.2.1"
+    "webpack-watch-server": "^1.2.1",
+    "winston": "^3.2.1"
   }
 }

@@ -1,0 +1,135 @@
+{"message":"trying to auth user..","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3001/users/ failed, reason: connect ECONNREFUSED 127.0.0.1:3001","level":"info"}
+{"message":"patch user info with id = undefined","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3001/users/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3001","level":"info"}
+{"message":"create story by user with id = undefined","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3002/stories/ failed, reason: connect ECONNREFUSED 127.0.0.1:3002","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3002/stories?pageNo=1&size=10 failed, reason: connect ECONNREFUSED 127.0.0.1:3002","level":"info"}
+{"message":"sending error response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"catch ERROR: request to http://localhost:3002/stories/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3002","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3002/stories/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3002","level":"info"}
+{"message":"make story with id = undefined favourite for user with id = undefined","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3003/favourites/ failed, reason: connect ECONNREFUSED 127.0.0.1:3003","level":"info"}
+{"message":"get favourites for user with id = undefined","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3003/favourites/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3003","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3003/favourites/?user_id=undefined&story_id=undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3003","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3003/favourites/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3003","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3004/notifications/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3004","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"catch ERROR: request to http://localhost:3001/users/undefined failed, reason: connect ECONNREFUSED 127.0.0.1:3001","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3001/users/ reason: Unexpected token C in JSON at position 0","level":"info"}
+{"message":"patch user info with id = undefined","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3001/users/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"create story by user with id = undefined","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3002/stories/ reason: Unexpected token N in JSON at position 0","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3002/stories?pageNo=1&size=10 reason: Unexpected token O in JSON at position 0","level":"info"}
+{"message":"sending error response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3002/stories/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3002/stories/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"make story with id = undefined favourite for user with id = undefined","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3003/favourites/ reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"get favourites for user with id = undefined","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3003/favourites/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3003/favourites/?user_id=undefined&story_id=undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3002/stories/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3004/notifications/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"catch ERROR: invalid json response body at http://localhost:3001/users/undefined reason: Unexpected token B in JSON at position 0","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = cd4f55b6-d5b8-42d1-a707-7c39683f1f3e","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = cd4f55b6-d5b8-42d1-a707-7c39683f1f3e","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"get user with idcd4f55b6-d5b8-42d1-a707-7c39683f1f3e","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 4f964662-b34c-4080-b5ee-5d3965737ea9 favourite for user with id = cd4f55b6-d5b8-42d1-a707-7c39683f1f3e","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = cd4f55b6-d5b8-42d1-a707-7c39683f1f3e","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = 570757a7-7e68-4b33-a831-386d9caf22ff","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = 570757a7-7e68-4b33-a831-386d9caf22ff","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"get user with id570757a7-7e68-4b33-a831-386d9caf22ff","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 6f7a81b2-1704-45cd-ac72-71284dd9ebcc favourite for user with id = 570757a7-7e68-4b33-a831-386d9caf22ff","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = 570757a7-7e68-4b33-a831-386d9caf22ff","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = a837d839-ffbf-4133-b530-739c239534aa","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = a837d839-ffbf-4133-b530-739c239534aa","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"get user with ida837d839-ffbf-4133-b530-739c239534aa","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 376c8edb-9b4e-44ed-a4e5-30b562c465b2 favourite for user with id = a837d839-ffbf-4133-b530-739c239534aa","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = a837d839-ffbf-4133-b530-739c239534aa","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"sending OK response..","level":"info"}
