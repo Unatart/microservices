@@ -6,6 +6,7 @@ import {notificationRoutes} from "./routes/notificationRoutes";
 import {NotificationControllers} from "./controllers/notificationControllers";
 import {NotificationManager} from "./dbManager/notificationManager";
 import {Notification} from "./entity/notification";
+import {winston_logger} from "../../common/winston/winstonLogger";
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,5 +16,7 @@ createConnection(notify_database).then(() => {
     const notify_db_manager = new NotificationManager(Notification);
     const notify_controller = new NotificationControllers(notify_db_manager);
     notificationRoutes(app, notify_controller);
-    app.listen(3004);
+    app.listen(3004, () => {
+        winston_logger.info(`API NOTIFICATION running in http://localhost:${3004}`);
+    });
 });

@@ -8,6 +8,7 @@ export class GatewayControllers {
         try {
             const pageNo = parseInt(req.query.pageNo) || 1;
             const size = parseInt(req.query.size) || 10;
+
             winston_logger.info('get all stories..\nwith pageNo =' + pageNo+ ' number of stories =' + size);
             const response = await fetch("http://localhost:3002/stories?pageNo="+pageNo+"&size="+size, {
                 method: 'get',
@@ -20,9 +21,11 @@ export class GatewayControllers {
             return res
                 .status(response.status)
                 .send(body);
+
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -78,6 +81,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -136,9 +140,11 @@ export class GatewayControllers {
                         notifications: notify_body
                     }
                 );
+
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -165,6 +171,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -194,6 +201,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -223,6 +231,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -253,6 +262,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -277,6 +287,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -306,6 +317,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -330,6 +342,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -354,6 +367,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));
@@ -373,8 +387,9 @@ export class GatewayControllers {
             if(!user_settings.email && !user_settings.phone) {
                 winston_logger.error('user don\'t have email or phone to enable notifications');
                 winston_logger.error(winston_messages.ERROR);
+
                 return res
-                    .send(400)
+                    .status(400)
                     .send(createError(CommonErrorMessages.USER_NO_SETTINGS));
             }
 
@@ -382,6 +397,7 @@ export class GatewayControllers {
                 winston_logger.error('user want to enable email notifications, but');
                 winston_logger.error('user don\'t have email to enable notifications');
                 winston_logger.error(winston_messages.ERROR);
+
                 return res
                     .status(400)
                     .send(createError(CommonErrorMessages.USER_NO_EMAIL));
@@ -391,6 +407,7 @@ export class GatewayControllers {
                 winston_logger.error('user want to enable phone notifications, but');
                 winston_logger.error('user don\'t have phone to enable notifications');
                 winston_logger.error(winston_messages.ERROR);
+
                 return res
                     .status(400)
                     .send(createError(CommonErrorMessages.USER_NO_PHONE));
@@ -414,6 +431,7 @@ export class GatewayControllers {
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
+
             return res
                 .status(400)
                 .send(createError(error.message));

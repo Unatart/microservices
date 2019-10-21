@@ -6,6 +6,7 @@ import {favouritesRoutes} from "./routes/favouritesRoutes";
 import {FavouritesControllers} from "./controllers/favouritesControllers";
 import {FavouritesManager} from "./dbManager/favouritesManager";
 import {Favourites} from "./entity/favourites";
+import {winston_logger} from "../../common/winston/winstonLogger";
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,5 +16,7 @@ createConnection(fav_database).then(() => {
     const fav_db_manager = new FavouritesManager(Favourites);
     const fav_controller = new FavouritesControllers(fav_db_manager);
     favouritesRoutes(app, fav_controller);
-    app.listen(3003);
+    app.listen(3003, () => {
+        winston_logger.info(`API FAVOURITES running in http://localhost:${3003}`);
+    });
 });

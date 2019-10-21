@@ -7,14 +7,14 @@ import {database} from "../src/common/db_config";
 import {routes} from "../src/gateway/routes/gatewayRoutes";
 import {GatewayControllers} from "../src/gateway/controllers/gatewayControllers";
 import chaiHttp = require('chai-http');
-import {createServiceConnections, lorem} from "./utils";
+import {createTestServiceConnections, lorem} from "./utils";
 
 chai.use(chaiHttp);
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
-createServiceConnections();
+createTestServiceConnections();
 
 describe('routes', () => {
     before((done) => {
@@ -217,6 +217,174 @@ describe('routes', () => {
                             done(error);
                         }
                         expect(response).to.have.status(200);
+                        done();
+                    });
+            });
+        });
+    });
+
+    describe("Запрос должен падать, ", () => {
+        describe("если post /user/auth и тело запроса пустое", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .post('/user/auth')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если patch /user/id и id пользователя не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .patch('/user/' + 1)
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если post /user/id/stories/ и id пользователя не uuid", () => {
+            it("и возвращать статус 404", (done) => {
+                chai.request(app)
+                    .post('/user/' + 1 + '/stories')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если get /stories/stories_id и stories_id не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .get('/stories/' + 1)
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            })
+        });
+
+        describe("если patch /user/id/stories/story_id и оба id не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .patch('/user/' + 1 + '/stories/' + 1)
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если post /user/id/stories/story_id/favourites и оба id не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .post('/user/' + 1 + '/stories/' + 1 + '/favourites')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe('если get /user/id/favourites и id пользователя не uuid', () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .get('/user/' + 1 + '/favourites')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe('если delete /user/id/stories/story_id/favourites и оба id не uuid', () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .delete('/user/' + 1 + '/stories/' + 1 + '/favourites')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если delete /user/id/stories/story_id и оба id не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .delete('/user/' + 1 + '/stories/' + 1)
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если get /user/id/notifications и id пользователя не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .get('/user/' + 1 + '/notifications')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+        describe("если patch /user/id/notifications и id пользователя не uuid", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .patch('/user/' + 1 + '/notifications')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
                         done();
                     });
             });

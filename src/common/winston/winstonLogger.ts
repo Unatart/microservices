@@ -5,7 +5,14 @@ export enum winston_messages {
     ERROR = 'sending error response..',
     CATCH = 'catch ERROR: ',
     BAD_REQUEST = 'response status was >= 400',
-    AUTH = 'trying to auth user..'
+    AUTH = 'trying to auth user..',
+    TEST_UUID = 'testing uuid..',
+    UUID_OK = 'uuid is fine',
+    UUID_INCORRECT = 'uuid is incorrect',
+    VALID_PASSWORD = 'validating password..',
+    PASSWORD_OK = 'password is fine',
+    PASSWORD_INCORRECT = 'password is incorrect',
+    CONNECT_DB = 'some db manipulations...'
 }
 
 export const winston_logger = winston.createLogger({

@@ -6,6 +6,7 @@ import {userRoutes} from "./routes/userRoutes";
 import {database} from "../../common/db_config";
 import {UserControllers} from "./controllers/userControllers";
 import {User} from "./entity/user";
+import {winston_logger} from "../../common/winston/winstonLogger";
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,6 +17,6 @@ createConnection(user_database).then(() => {
     const user_controller = new UserControllers(user_db_manager);
     userRoutes(app, user_controller);
     app.listen(3001, () => {
-            console.log(`API REST running in http://localhost:${3001}`);
+            winston_logger.info(`API USER running in http://localhost:${3001}`);
     });
 });

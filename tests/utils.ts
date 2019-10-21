@@ -19,6 +19,7 @@ import {NotificationManager} from "../src/services/notification/dbManager/notifi
 import {Notification} from "../src/services/notification/entity/notification";
 import {NotificationControllers} from "../src/services/notification/controllers/notificationControllers";
 import {notificationRoutes} from "../src/services/notification/routes/notificationRoutes";
+import {winston_logger} from "../src/common/winston/winstonLogger";
 
 export const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -33,7 +34,7 @@ export const lorem = new LoremIpsum({
 
 // противный костыль, чтобы все сервисы попали под проверку покрытия тестами
 // иначе, если запускать отдельно, nyc их не видит
-export function createServiceConnections() {
+export function createTestServiceConnections() {
     const user_app = express();
     user_app.use(bodyParser.json());
 
@@ -42,7 +43,9 @@ export function createServiceConnections() {
         const user_db_manager = new UserManager(User);
         const user_controller = new UserControllers(user_db_manager);
         userRoutes(user_app, user_controller);
-        user_app.listen(3001);
+        user_app.listen(3001, () => {
+            winston_logger.info(`TEST API USER running in http://localhost:${3001}`);
+        });
     });
 
     const story_app = express();
@@ -53,7 +56,9 @@ export function createServiceConnections() {
         const story_db_manager = new StoryManager(Story);
         const story_controller = new StoryControllers(story_db_manager);
         storyRoutes(story_app, story_controller);
-        story_app.listen(3002);
+        story_app.listen(3002, () => {
+            winston_logger.info(`TEST API STORY running in http://localhost:${3002}`);
+        });
     });
 
     const fav_app = express();
@@ -64,7 +69,9 @@ export function createServiceConnections() {
         const fav_db_manager = new FavouritesManager(Favourites);
         const fav_controller = new FavouritesControllers(fav_db_manager);
         favouritesRoutes(fav_app, fav_controller);
-        fav_app.listen(3003);
+        fav_app.listen(3003, () => {
+            winston_logger.info(`TEST API FAVOURITES running in http://localhost:${3003}`);
+        });
     });
 
     const not_app = express();
@@ -75,6 +82,8 @@ export function createServiceConnections() {
         const notify_db_manager = new NotificationManager(Notification);
         const notify_controller = new NotificationControllers(notify_db_manager);
         notificationRoutes(not_app, notify_controller);
-        not_app.listen(3004);
+        not_app.listen(3004, () => {
+            winston_logger.info(`TEST API NOTIFICATIONS running in http://localhost:${3004}`);
+        });
     });
 }
