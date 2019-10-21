@@ -8,13 +8,16 @@ export class FavouritesControllers extends CommonControllers<FavouritesManager> 
     public getFavourites = async (req: Request, res: Response) => {
         try {
             const user_uuid = req.params.user_id;
+            const pageNo = parseInt(req.query.pageNo) || 1;
+            const size = parseInt(req.query.size) || 10;
+            const start = size * (pageNo - 1);
             winston_logger.info(winston_messages.TEST_UUID);
 
             if (this.uuid_regex.test(user_uuid)) {
                 winston_logger.info(winston_messages.UUID_OK);
                 winston_logger.info(winston_messages.CONNECT_DB);
 
-                const results = await this.db_manager.getFav(user_uuid);
+                const results = await this.db_manager.getFav(user_uuid, start, size);
 
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(results);

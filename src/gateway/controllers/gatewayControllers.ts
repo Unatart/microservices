@@ -278,9 +278,11 @@ export class GatewayControllers {
 
     public async getUserFavs(req: Request, res: Response) {
         try {
+            const pageNo = parseInt(req.query.pageNo) || 1;
+            const size = parseInt(req.query.size) || 10;
             winston_logger.info("GET /user/:id/favourites");
             winston_logger.info('get favourites for user with id = ' + req.params.id);
-            const fav_response = await fetch("http://localhost:3003/favourites/" + req.params.id, {
+            const fav_response = await fetch("http://localhost:3003/favourites/" + req.params.id + "?pageNo="+pageNo+"&size="+size, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
             });
