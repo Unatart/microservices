@@ -1460,3 +1460,1250 @@
 {"message":"response status was >= 400","level":"error"}
 {"message":"user don't have email or phone to enable notifications","level":"error"}
 {"message":"sending error response..","level":"error"}
+{"message":"TEST API USER running in http://localhost:3001","level":"info"}
+{"message":"TEST API FAVOURITES running in http://localhost:3003","level":"info"}
+{"message":"TEST API STORY running in http://localhost:3002","level":"info"}
+{"message":"TEST API NOTIFICATIONS running in http://localhost:3004","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","email":false,"phone":false,"id":"1b71dee1-d467-486b-a035-a2e24a95605d"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = f70929d6-02fa-4fe6-90b5-c85b23180ed3","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = f70929d6-02fa-4fe6-90b5-c85b23180ed3","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"test","author":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","article":"Cupidatat ad do ullamco ullamco ut commodo quis reprehenderit enim tempor sit do est fugiat. Dolor exercitation do esse duis. Adipisicing quis tempor amet ipsum dolor ullamco aliqua labore labore sunt amet non anim occaecat. Lorem dolor ex pariatur dolore ipsum id nulla.","id":"a07915fe-8cec-4d84-a4f2-b687bbd47c9d"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"a07915fe-8cec-4d84-a4f2-b687bbd47c9d","theme":"test","author":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","article":"Cupidatat ad do ullamco ullamco ut commodo quis reprehenderit enim tempor sit do est fugiat. Dolor exercitation do esse duis. Adipisicing quis tempor amet ipsum dolor ullamco aliqua labore labore sunt amet non anim occaecat. Lorem dolor ex pariatur dolore ipsum id nulla."}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a07915fe-8cec-4d84-a4f2-b687bbd47c9d","theme":"test","author":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","article":"Cupidatat ad do ullamco ullamco ut commodo quis reprehenderit enim tempor sit do est fugiat. Dolor exercitation do esse duis. Adipisicing quis tempor amet ipsum dolor ullamco aliqua labore labore sunt amet non anim occaecat. Lorem dolor ex pariatur dolore ipsum id nulla."},"level":"info"}
+{"message":"get user with idf70929d6-02fa-4fe6-90b5-c85b23180ed3","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a07915fe-8cec-4d84-a4f2-b687bbd47c9d","theme":"test","author":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","article":"Do ad cillum qui qui voluptate duis et veniam reprehenderit. In dolore eiusmod culpa amet sint nulla. Duis amet eu magna. Incididunt laboris nisi nostrud deserunt velit adipisicing ullamco nulla laboris voluptate. Non incididunt incididunt do adipisicing ipsum eiusmod cupidatat nostrud cupidatat excepteur velit."},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = a07915fe-8cec-4d84-a4f2-b687bbd47c9d favourite for user with id = f70929d6-02fa-4fe6-90b5-c85b23180ed3","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","story_id":"a07915fe-8cec-4d84-a4f2-b687bbd47c9d","id":"868f7b5b-780e-48fb-a19f-2d42a29c2779"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = f70929d6-02fa-4fe6-90b5-c85b23180ed3","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"868f7b5b-780e-48fb-a19f-2d42a29c2779","user_id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","story_id":"a07915fe-8cec-4d84-a4f2-b687bbd47c9d"}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":0},"level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1b71dee1-d467-486b-a035-a2e24a95605d","user_id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1b71dee1-d467-486b-a035-a2e24a95605d","user_id":"f70929d6-02fa-4fe6-90b5-c85b23180ed3","email":true,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid password"},"level":"error"}
+{"message":"patch user info with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Incorrect story uuid"},"level":"error"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 1 favourite for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"user don't have email or phone to enable notifications","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"ba54e351-1f39-402c-8fdc-04de31b9ffb6"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"ba54e351-1f39-402c-8fdc-04de31b9ffb6","email":false,"phone":false,"id":"a41ac329-8032-482b-af6a-c0a4c83c9041"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = ba54e351-1f39-402c-8fdc-04de31b9ffb6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"ba54e351-1f39-402c-8fdc-04de31b9ffb6","name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"TEST API STORY running in http://localhost:3002","level":"info"}
+{"message":"TEST API USER running in http://localhost:3001","level":"info"}
+{"message":"TEST API NOTIFICATIONS running in http://localhost:3004","level":"info"}
+{"message":"TEST API FAVOURITES running in http://localhost:3003","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"a8a1fd35-1168-4bb9-a902-dfd768861155"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"a8a1fd35-1168-4bb9-a902-dfd768861155","email":false,"phone":false,"id":"22b8b8f9-78cc-4bd6-b6a9-ebd93f371bba"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = a8a1fd35-1168-4bb9-a902-dfd768861155","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a8a1fd35-1168-4bb9-a902-dfd768861155","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = a8a1fd35-1168-4bb9-a902-dfd768861155","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"test","author":"a8a1fd35-1168-4bb9-a902-dfd768861155","article":"Nostrud minim eu sit. Nisi mollit nostrud mollit mollit nisi Lorem cupidatat magna. Non nostrud deserunt eiusmod consequat incididunt est voluptate nostrud nisi aute aliquip anim qui. Dolore nostrud nostrud labore enim proident do labore consequat qui.","id":"41078129-bb2e-45d4-b116-e236f1e3918b"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"41078129-bb2e-45d4-b116-e236f1e3918b","theme":"test","author":"a8a1fd35-1168-4bb9-a902-dfd768861155","article":"Nostrud minim eu sit. Nisi mollit nostrud mollit mollit nisi Lorem cupidatat magna. Non nostrud deserunt eiusmod consequat incididunt est voluptate nostrud nisi aute aliquip anim qui. Dolore nostrud nostrud labore enim proident do labore consequat qui."}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"41078129-bb2e-45d4-b116-e236f1e3918b","theme":"test","author":"a8a1fd35-1168-4bb9-a902-dfd768861155","article":"Nostrud minim eu sit. Nisi mollit nostrud mollit mollit nisi Lorem cupidatat magna. Non nostrud deserunt eiusmod consequat incididunt est voluptate nostrud nisi aute aliquip anim qui. Dolore nostrud nostrud labore enim proident do labore consequat qui."},"level":"info"}
+{"message":"get user with ida8a1fd35-1168-4bb9-a902-dfd768861155","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a8a1fd35-1168-4bb9-a902-dfd768861155","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"41078129-bb2e-45d4-b116-e236f1e3918b","theme":"test","author":"a8a1fd35-1168-4bb9-a902-dfd768861155","article":"Lorem consequat incididunt consectetur proident dolor voluptate non voluptate. Esse minim veniam nisi anim. Est Lorem aute fugiat consectetur aliqua ex sunt elit esse occaecat et. Cupidatat non irure incididunt exercitation qui pariatur dolore sit. Reprehenderit eiusmod anim tempor ad ullamco est consequat."},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 41078129-bb2e-45d4-b116-e236f1e3918b favourite for user with id = a8a1fd35-1168-4bb9-a902-dfd768861155","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"a8a1fd35-1168-4bb9-a902-dfd768861155","story_id":"41078129-bb2e-45d4-b116-e236f1e3918b","id":"7b223a32-218f-4bac-ba14-f74986163f24"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = a8a1fd35-1168-4bb9-a902-dfd768861155","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"7b223a32-218f-4bac-ba14-f74986163f24","user_id":"a8a1fd35-1168-4bb9-a902-dfd768861155","story_id":"41078129-bb2e-45d4-b116-e236f1e3918b"}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":0},"level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"22b8b8f9-78cc-4bd6-b6a9-ebd93f371bba","user_id":"a8a1fd35-1168-4bb9-a902-dfd768861155","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a8a1fd35-1168-4bb9-a902-dfd768861155","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"22b8b8f9-78cc-4bd6-b6a9-ebd93f371bba","user_id":"a8a1fd35-1168-4bb9-a902-dfd768861155","email":true,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid password"},"level":"error"}
+{"message":"patch user info with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Incorrect story uuid"},"level":"error"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 1 favourite for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"user don't have email or phone to enable notifications","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"96624514-e88a-4feb-bb69-74acf409f847"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"96624514-e88a-4feb-bb69-74acf409f847","email":false,"phone":false,"id":"92ae159d-eed2-4f28-abc0-1ab1f9057b76"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = 96624514-e88a-4feb-bb69-74acf409f847","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"96624514-e88a-4feb-bb69-74acf409f847","name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"TEST API USER running in http://localhost:3001","level":"info"}
+{"message":"TEST API FAVOURITES running in http://localhost:3003","level":"info"}
+{"message":"TEST API STORY running in http://localhost:3002","level":"info"}
+{"message":"TEST API NOTIFICATIONS running in http://localhost:3004","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","email":false,"phone":false,"id":"3f4f65d3-2674-48ab-b665-66a5d8015e91"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = d13f96ab-d2c9-4f7e-a350-10677aef1de6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = d13f96ab-d2c9-4f7e-a350-10677aef1de6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"test","author":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","article":"Minim magna eu fugiat esse Lorem magna ex tempor deserunt. Quis sunt commodo eiusmod sint. Aliquip adipisicing in eiusmod dolore culpa officia consectetur veniam consectetur consequat irure. Adipisicing minim aute occaecat sit ad commodo tempor exercitation irure nulla ipsum aute fugiat.","id":"1fccfb4e-f820-4d27-a163-30256553f7ce"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"1fccfb4e-f820-4d27-a163-30256553f7ce","theme":"test","author":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","article":"Minim magna eu fugiat esse Lorem magna ex tempor deserunt. Quis sunt commodo eiusmod sint. Aliquip adipisicing in eiusmod dolore culpa officia consectetur veniam consectetur consequat irure. Adipisicing minim aute occaecat sit ad commodo tempor exercitation irure nulla ipsum aute fugiat."}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1fccfb4e-f820-4d27-a163-30256553f7ce","theme":"test","author":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","article":"Minim magna eu fugiat esse Lorem magna ex tempor deserunt. Quis sunt commodo eiusmod sint. Aliquip adipisicing in eiusmod dolore culpa officia consectetur veniam consectetur consequat irure. Adipisicing minim aute occaecat sit ad commodo tempor exercitation irure nulla ipsum aute fugiat."},"level":"info"}
+{"message":"get user with idd13f96ab-d2c9-4f7e-a350-10677aef1de6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1fccfb4e-f820-4d27-a163-30256553f7ce","theme":"test","author":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","article":"Tempor excepteur cillum Lorem non cillum ut non officia officia veniam aute magna. Ipsum minim Lorem do qui sunt et tempor veniam ut veniam ipsum veniam laboris. Dolore ipsum magna voluptate elit mollit laboris. Reprehenderit deserunt ut occaecat irure minim do consectetur anim culpa tempor. Ullamco in cillum pariatur voluptate ipsum magna ex sit tempor."},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 1fccfb4e-f820-4d27-a163-30256553f7ce favourite for user with id = d13f96ab-d2c9-4f7e-a350-10677aef1de6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","story_id":"1fccfb4e-f820-4d27-a163-30256553f7ce","id":"ff186aeb-40fb-45af-99d1-da032757a999"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = d13f96ab-d2c9-4f7e-a350-10677aef1de6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"ff186aeb-40fb-45af-99d1-da032757a999","user_id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","story_id":"1fccfb4e-f820-4d27-a163-30256553f7ce"}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":0},"level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"3f4f65d3-2674-48ab-b665-66a5d8015e91","user_id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"3f4f65d3-2674-48ab-b665-66a5d8015e91","user_id":"d13f96ab-d2c9-4f7e-a350-10677aef1de6","email":true,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid password"},"level":"error"}
+{"message":"patch user info with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Incorrect story uuid"},"level":"error"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"make story with id = 1 favourite for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get favourites for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"user don't have email or phone to enable notifications","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"4f5458c4-7e76-436e-8225-ae20003fbc64"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"4f5458c4-7e76-436e-8225-ae20003fbc64","email":false,"phone":false,"id":"22e5dd64-3fb8-4ca8-a355-87f497260792"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = d13f96ab-d2c9-4f7e-a350-10677aef1de6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: User with such name is already exist","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"API USER running in http://localhost:3001","level":"info"}
+{"message":"API USER running in http://localhost:3001","level":"info"}
+{"message":"API STORY running in http://localhost:3002","level":"info"}
+{"message":"API NOTIFICATION running in http://localhost:3004","level":"info"}
+{"message":"API FAVOURITES running in http://localhost:3003","level":"info"}
+{"message":"API GATEWAY running in http://localhost:3000","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":{"name":"Vjsabdf","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76","id":"e8c10672-053f-4297-a1bb-bc6d9379387d"},"level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"e8c10672-053f-4297-a1bb-bc6d9379387d","email":false,"phone":false,"id":"ba89169c-8b1a-470b-a0cc-3f3009e473d7"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = c9c0025d-0503-4685-a5f8-4f8e96571b96","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: No user with such id","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"sending error response..","level":"error"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"e8c10672-053f-4297-a1bb-bc6d9379387d","name":"Vjsabdf","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"ba89169c-8b1a-470b-a0cc-3f3009e473d7","user_id":"e8c10672-053f-4297-a1bb-bc6d9379387d","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = e8c10672-053f-4297-a1bb-bc6d9379387d","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"e8c10672-053f-4297-a1bb-bc6d9379387d","name":"Vasya","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76"},"level":"info"}
+{"message":"patch user info with id = e8c10672-053f-4297-a1bb-bc6d9379387d","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"e8c10672-053f-4297-a1bb-bc6d9379387d","name":"Vasya","email":"sjfh@jdsf.ru","phone":"","password":"c94e5913ea2c0a5c3ad39f5ec85c986df219f0fb26d4091a429b44fbb856d728"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"Vjsabdf","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76","id":"cecb86e2-696a-44ac-b4ee-d5e0ac1f5b1b"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"cecb86e2-696a-44ac-b4ee-d5e0ac1f5b1b","email":false,"phone":false,"id":"9fc7784c-4522-48c1-8171-9df31fbf609b"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: Invalid data","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid data"},"level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: Invalid data","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid data"},"level":"error"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"Vjsabdf","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76","id":"9ca466de-c807-4bc5-915f-27e03ec6b686"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"9ca466de-c807-4bc5-915f-27e03ec6b686","email":false,"phone":false,"id":"001f8e7c-fea5-4aa0-8716-1f4e7b9f0464"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"patch user info with id = 9ca466de-c807-4bc5-915f-27e03ec6b686","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"9ca466de-c807-4bc5-915f-27e03ec6b686","name":"Vasya","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76"},"level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"9ca466de-c807-4bc5-915f-27e03ec6b686","name":"Vasya","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"001f8e7c-fea5-4aa0-8716-1f4e7b9f0464","user_id":"9ca466de-c807-4bc5-915f-27e03ec6b686","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"create story by user with id = c9c0025d-0503-4685-a5f8-4f8e96571b96","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"Programming","author":"c9c0025d-0503-4685-a5f8-4f8e96571b96","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","id":"4fc89fc3-c296-4389-bc6b-df3d4ea2d531"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: No story with such uuid","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"No story with such uuid"},"level":"error"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"4fc89fc3-c296-4389-bc6b-df3d4ea2d531","theme":"Programming","author":"c9c0025d-0503-4685-a5f8-4f8e96571b96","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},"level":"info"}
+{"message":"get user with idc9c0025d-0503-4685-a5f8-4f8e96571b96","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: No user with such id","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"No user with such id"},"level":"error"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"4fc89fc3-c296-4389-bc6b-df3d4ea2d531","theme":"Programming","author":"c9c0025d-0503-4685-a5f8-4f8e96571b96","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},"level":"info"}
+{"message":"get user with idc9c0025d-0503-4685-a5f8-4f8e96571b96","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: No user with such id","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"No user with such id"},"level":"error"}
+{"message":"create story by user with id = 9ca466de-c807-4bc5-915f-27e03ec6b686","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"Programming","author":"9ca466de-c807-4bc5-915f-27e03ec6b686","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","id":"9f43e652-cc0b-4d0e-bce7-49147caa79fc"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"9f43e652-cc0b-4d0e-bce7-49147caa79fc","theme":"Programming","author":"9ca466de-c807-4bc5-915f-27e03ec6b686","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},"level":"info"}
+{"message":"get user with id9ca466de-c807-4bc5-915f-27e03ec6b686","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"9ca466de-c807-4bc5-915f-27e03ec6b686","name":"Vasya","email":"","phone":"","password":"64d654957a37555c9d97f148dd1e51402bd775acde5ee3aaaf0d162f1ac6fd76"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"4fc89fc3-c296-4389-bc6b-df3d4ea2d531","theme":"Programming","author":"c9c0025d-0503-4685-a5f8-4f8e96571b96","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},{"id":"9f43e652-cc0b-4d0e-bce7-49147caa79fc","theme":"Programming","author":"9ca466de-c807-4bc5-915f-27e03ec6b686","article":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"TEST API USER running in http://localhost:3001","level":"info"}
+{"message":"TEST API STORY running in http://localhost:3002","level":"info"}
+{"message":"TEST API FAVOURITES running in http://localhost:3003","level":"info"}
+{"message":"TEST API NOTIFICATIONS running in http://localhost:3004","level":"info"}
+{"message":"POST /user/auth","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","email":false,"phone":false,"id":"fb37fa48-994c-4b7b-a9ff-88f8f2d2e925"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id","level":"info"}
+{"message":"patch user info with id = 1941f644-5a9c-4bca-9bd2-fa4ddb972056","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories","level":"info"}
+{"message":"create story by user with id = 1941f644-5a9c-4bca-9bd2-fa4ddb972056","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"test","author":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","article":"Fugiat irure ipsum ullamco labore qui aliquip labore irure non eu enim pariatur quis cupidatat. Pariatur ad exercitation elit mollit consectetur commodo pariatur occaecat elit consectetur proident ea ullamco ipsum enim. Eiusmod do consectetur laborum anim exercitation Lorem sunt excepteur veniam. Sunt minim veniam eiusmod.","id":"efc46183-86b7-476b-9dae-c4924f9b0a94"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /stories","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"efc46183-86b7-476b-9dae-c4924f9b0a94","theme":"test","author":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","article":"Fugiat irure ipsum ullamco labore qui aliquip labore irure non eu enim pariatur quis cupidatat. Pariatur ad exercitation elit mollit consectetur commodo pariatur occaecat elit consectetur proident ea ullamco ipsum enim. Eiusmod do consectetur laborum anim exercitation Lorem sunt excepteur veniam. Sunt minim veniam eiusmod."}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /stories/:id","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"efc46183-86b7-476b-9dae-c4924f9b0a94","theme":"test","author":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","article":"Fugiat irure ipsum ullamco labore qui aliquip labore irure non eu enim pariatur quis cupidatat. Pariatur ad exercitation elit mollit consectetur commodo pariatur occaecat elit consectetur proident ea ullamco ipsum enim. Eiusmod do consectetur laborum anim exercitation Lorem sunt excepteur veniam. Sunt minim veniam eiusmod."},"level":"info"}
+{"message":"get user with id1941f644-5a9c-4bca-9bd2-fa4ddb972056","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id/stories/:story_id","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"efc46183-86b7-476b-9dae-c4924f9b0a94","theme":"test","author":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","article":"Et labore culpa adipisicing duis minim voluptate officia. Consequat esse reprehenderit aliquip elit aliquip mollit officia sit non incididunt reprehenderit in. Ipsum elit amet elit. Enim quis labore dolore consectetur quis consequat amet ut enim excepteur laboris elit. Excepteur occaecat duis ipsum."},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"make story with id = efc46183-86b7-476b-9dae-c4924f9b0a94 favourite for user with id = 1941f644-5a9c-4bca-9bd2-fa4ddb972056","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","story_id":"efc46183-86b7-476b-9dae-c4924f9b0a94","id":"26b19df7-fef7-485e-b137-d498b2abad3c"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/favourites","level":"info"}
+{"message":"get favourites for user with id = 1941f644-5a9c-4bca-9bd2-fa4ddb972056","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"26b19df7-fef7-485e-b137-d498b2abad3c","user_id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","story_id":"efc46183-86b7-476b-9dae-c4924f9b0a94"}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":0},"level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/notifications","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"fb37fa48-994c-4b7b-a9ff-88f8f2d2e925","user_id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id/notifications","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"fb37fa48-994c-4b7b-a9ff-88f8f2d2e925","user_id":"1941f644-5a9c-4bca-9bd2-fa4ddb972056","email":true,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/auth","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid password"},"level":"error"}
+{"message":"PATCH /user/:id","level":"info"}
+{"message":"patch user info with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories","level":"info"}
+{"message":"create story by user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /stories/:id","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Incorrect story uuid"},"level":"error"}
+{"message":"PATCH /user/:id/stories/:story_id","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"make story with id = 1 favourite for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/favourites","level":"info"}
+{"message":"get favourites for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/notifications","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id/notifications","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"user don't have email or phone to enable notifications","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"POST /user/auth","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"09608d18-9f4f-409a-a959-1ebdc082cccd"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"09608d18-9f4f-409a-a959-1ebdc082cccd","email":false,"phone":false,"id":"e091a766-3a3f-4d2f-9c1c-76bd9206f917"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id","level":"info"}
+{"message":"patch user info with id = 1941f644-5a9c-4bca-9bd2-fa4ddb972056","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: User with such name is already exist","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"TEST API USER running in http://localhost:3001","level":"info"}
+{"message":"TEST API STORY running in http://localhost:3002","level":"info"}
+{"message":"TEST API FAVOURITES running in http://localhost:3003","level":"info"}
+{"message":"TEST API NOTIFICATIONS running in http://localhost:3004","level":"info"}
+{"message":"POST /user/auth","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"86cd983f-8675-4a8b-8be7-d013cec694c6"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"86cd983f-8675-4a8b-8be7-d013cec694c6","email":false,"phone":false,"id":"4633a411-653c-4c47-b354-ad9fe3c97063"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id","level":"info"}
+{"message":"patch user info with id = 86cd983f-8675-4a8b-8be7-d013cec694c6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"86cd983f-8675-4a8b-8be7-d013cec694c6","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories","level":"info"}
+{"message":"create story by user with id = 86cd983f-8675-4a8b-8be7-d013cec694c6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"theme":"test","author":"86cd983f-8675-4a8b-8be7-d013cec694c6","article":"Incididunt sit do ullamco aute ut adipisicing commodo dolore tempor laborum minim. Do proident non incididunt sint irure voluptate id laborum ad. Ex deserunt id laboris qui qui dolore quis laborum occaecat ea Lorem. Velit adipisicing amet non velit qui proident magna anim veniam magna pariatur in eu irure eiusmod.","id":"a1c92a49-eeb7-46a9-9f65-3213fe99df75"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /stories","level":"info"}
+{"message":"get all stories..\nwith pageNo =1 number of stories =10","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"a1c92a49-eeb7-46a9-9f65-3213fe99df75","theme":"test","author":"86cd983f-8675-4a8b-8be7-d013cec694c6","article":"Incididunt sit do ullamco aute ut adipisicing commodo dolore tempor laborum minim. Do proident non incididunt sint irure voluptate id laborum ad. Ex deserunt id laboris qui qui dolore quis laborum occaecat ea Lorem. Velit adipisicing amet non velit qui proident magna anim veniam magna pariatur in eu irure eiusmod."}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /stories/:id","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a1c92a49-eeb7-46a9-9f65-3213fe99df75","theme":"test","author":"86cd983f-8675-4a8b-8be7-d013cec694c6","article":"Incididunt sit do ullamco aute ut adipisicing commodo dolore tempor laborum minim. Do proident non incididunt sint irure voluptate id laborum ad. Ex deserunt id laboris qui qui dolore quis laborum occaecat ea Lorem. Velit adipisicing amet non velit qui proident magna anim veniam magna pariatur in eu irure eiusmod."},"level":"info"}
+{"message":"get user with id86cd983f-8675-4a8b-8be7-d013cec694c6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"86cd983f-8675-4a8b-8be7-d013cec694c6","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id/stories/:story_id","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"a1c92a49-eeb7-46a9-9f65-3213fe99df75","theme":"test","author":"86cd983f-8675-4a8b-8be7-d013cec694c6","article":"Consequat pariatur non do exercitation qui dolore consectetur sint dolor dolore id incididunt aliquip fugiat veniam. Aliquip duis elit officia est. Pariatur qui reprehenderit adipisicing ipsum dolore ipsum adipisicing nostrud. Minim Lorem amet duis amet pariatur nisi aliqua ex ex. Minim veniam excepteur enim proident aliqua nostrud laborum ex incididunt reprehenderit."},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"make story with id = a1c92a49-eeb7-46a9-9f65-3213fe99df75 favourite for user with id = 86cd983f-8675-4a8b-8be7-d013cec694c6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"86cd983f-8675-4a8b-8be7-d013cec694c6","story_id":"a1c92a49-eeb7-46a9-9f65-3213fe99df75","id":"c54bed1a-958a-46a2-aebb-029c4aeb508b"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/favourites","level":"info"}
+{"message":"get favourites for user with id = 86cd983f-8675-4a8b-8be7-d013cec694c6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":[{"id":"c54bed1a-958a-46a2-aebb-029c4aeb508b","user_id":"86cd983f-8675-4a8b-8be7-d013cec694c6","story_id":"a1c92a49-eeb7-46a9-9f65-3213fe99df75"}],"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":0},"level":"info"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"raw":[],"affected":1},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/notifications","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"4633a411-653c-4c47-b354-ad9fe3c97063","user_id":"86cd983f-8675-4a8b-8be7-d013cec694c6","email":false,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id/notifications","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"86cd983f-8675-4a8b-8be7-d013cec694c6","name":"test","email":"shfbsj@djkfg.ru","phone":"","password":"b42932f05f213f249fd12a64c7e234ade61344fb7ce1913224783cd36441bc8e"},"level":"info"}
+{"message":"updating notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"id":"4633a411-653c-4c47-b354-ad9fe3c97063","user_id":"86cd983f-8675-4a8b-8be7-d013cec694c6","email":true,"phone":false},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/auth","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Invalid password"},"level":"error"}
+{"message":"PATCH /user/:id","level":"info"}
+{"message":"patch user info with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories","level":"info"}
+{"message":"create story by user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /stories/:id","level":"info"}
+{"level":"info","message":"get one story with id:"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":{"error":"Incorrect story uuid"},"level":"error"}
+{"message":"PATCH /user/:id/stories/:story_id","level":"info"}
+{"message":"update story info..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"POST /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"make story with id = 1 favourite for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/favourites","level":"info"}
+{"message":"get favourites for user with id = 1","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id/favourites","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"DELETE /user/:id/stories/:story_id","level":"info"}
+{"message":"delete story from favourites..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"delete story...","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"GET /user/:id/notifications","level":"info"}
+{"message":"get user notifications settings..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id/notifications","level":"info"}
+{"message":"get user data..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is incorrect","level":"error"}
+{"message":"response status was >= 400","level":"error"}
+{"message":"user don't have email or phone to enable notifications","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"POST /user/auth","level":"info"}
+{"message":"trying to auth user..","level":"info"}
+{"message":"validating password..","level":"info"}
+{"message":"check if name is !undefined..","level":"info"}
+{"message":"password is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"name":"test2","email":"","phone":"","password":"a999b17e6973cd882bb6645beb99c71233c22f9e6cf3e95ec7002a197e17dab6","id":"b539560b-0095-4974-8002-289101114712"},"level":"info"}
+{"message":"update notifications for user..","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":{"user_id":"b539560b-0095-4974-8002-289101114712","email":false,"phone":false,"id":"7813f798-b081-4322-a079-0a88c2c6b167"},"level":"info"}
+{"message":"sending OK response..","level":"info"}
+{"message":"PATCH /user/:id","level":"info"}
+{"message":"patch user info with id = 86cd983f-8675-4a8b-8be7-d013cec694c6","level":"info"}
+{"message":"testing uuid..","level":"info"}
+{"message":"test request body != undefined..","level":"info"}
+{"message":"uuid is fine","level":"info"}
+{"message":"some db manipulations...","level":"info"}
+{"message":"catch ERROR: User with such name is already exist","level":"error"}
+{"message":"sending error response..","level":"error"}
+{"message":"sending OK response..","level":"info"}

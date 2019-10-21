@@ -9,6 +9,7 @@ export class GatewayControllers {
             const pageNo = parseInt(req.query.pageNo) || 1;
             const size = parseInt(req.query.size) || 10;
 
+            winston_logger.info("GET /stories");
             winston_logger.info('get all stories..\nwith pageNo =' + pageNo+ ' number of stories =' + size);
             const response = await fetch("http://localhost:3002/stories?pageNo="+pageNo+"&size="+size, {
                 method: 'get',
@@ -34,6 +35,7 @@ export class GatewayControllers {
 
     public async getOneStory(req: Request, res: Response) {
         try {
+            winston_logger.info("GET /stories/:id");
             winston_logger.info('get one story with id:', req.params.id);
             const story_response = await fetch("http://localhost:3002/stories/" + req.params.id, {
                 method: 'get',
@@ -90,6 +92,7 @@ export class GatewayControllers {
 
     public async authUser(req: Request, res: Response) {
         try {
+            winston_logger.info("POST /user/auth");
             winston_logger.info(winston_messages.AUTH);
             const user_response = await fetch("http://localhost:3001/users/", {
                 method: 'post',
@@ -153,6 +156,7 @@ export class GatewayControllers {
 
     public async updateUserInfo(req: Request, res: Response) {
         try {
+            winston_logger.info("PATCH /user/:id");
             winston_logger.info('patch user info with id = ' + req.params.id);
             const user_response = await fetch("http://localhost:3001/users/" + req.params.id, {
                 method: 'patch',
@@ -180,6 +184,7 @@ export class GatewayControllers {
 
     public async createStoryByUser(req: Request, res: Response) {
         try {
+            winston_logger.info("POST /user/:id/stories");
             winston_logger.info('create story by user with id = ' + req.params.id);
             const story_response = await fetch("http://localhost:3002/stories/", {
                 method: 'post',
@@ -210,6 +215,7 @@ export class GatewayControllers {
 
     public async updateStoryByUser(req: Request, res: Response) {
         try {
+            winston_logger.info("PATCH /user/:id/stories/:story_id");
             winston_logger.info('update story info..');
             const story_response = await fetch("http://localhost:3002/stories/" + req.params.story_id, {
                 method: 'patch',
@@ -240,6 +246,7 @@ export class GatewayControllers {
 
     public async deleteStoryByUser(req: Request, res: Response) {
         try {
+            winston_logger.info("DELETE /user/:id/stories/:story_id");
             winston_logger.info('delete story from favourites..');
             await fetch("http://localhost:3003/favourites/" + req.params.story_id, {
                 method: 'delete',
@@ -271,6 +278,7 @@ export class GatewayControllers {
 
     public async getUserFavs(req: Request, res: Response) {
         try {
+            winston_logger.info("GET /user/:id/favourites");
             winston_logger.info('get favourites for user with id = ' + req.params.id);
             const fav_response = await fetch("http://localhost:3003/favourites/" + req.params.id, {
                 method: 'get',
@@ -296,6 +304,7 @@ export class GatewayControllers {
 
     public async makeStoryFavForUser(req: Request, res: Response) {
         try {
+            winston_logger.info("POST /user/:id/stories/:story_id/favourites");
             winston_logger.info('make story with id = ' + req.params.story_id + ' favourite for user with id = ' + req.params.id);
             const fav_response = await fetch("http://localhost:3003/favourites/", {
                 method: 'post',
@@ -326,6 +335,7 @@ export class GatewayControllers {
 
     public async deleteStoryFromFavUser(req: Request, res: Response) {
         try {
+            winston_logger.info("DELETE /user/:id/stories/:story_id/favourites");
             winston_logger.info('delete story from favourites..');
             const notify_response = await fetch("http://localhost:3003/favourites/?user_id=" + req.params.id + "&story_id=" + req.params.story_id, {
                 method: 'delete',
@@ -351,6 +361,7 @@ export class GatewayControllers {
 
     public async getUserNotifySettings(req: Request, res: Response) {
         try {
+            winston_logger.info("GET /user/:id/notifications");
             winston_logger.info('get user notifications settings..');
             const notify_response = await fetch("http://localhost:3004/notifications/" + req.params.id, {
                 method: 'get',
@@ -376,6 +387,7 @@ export class GatewayControllers {
 
     public async updateNotifySettings(req: Request, res: Response) {
         try {
+            winston_logger.info("PATCH /user/:id/notifications");
             winston_logger.info('get user data..');
             const user_response = await fetch("http://localhost:3001/users/" + req.params.id, {
                 method: 'get',

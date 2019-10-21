@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 createTestServiceConnections();
 
 describe('routes', () => {
+    let user_id;
+
     before((done) => {
         createConnection(database).then(() => {
             const controller = new GatewayControllers();
@@ -31,7 +33,6 @@ describe('routes', () => {
     });
 
     describe("Запрос должен проходить удачно, ", () => {
-        let user_id;
         let story_id;
         describe("если post /user/auth", () => {
             it("и возвращать статус 200", (done) => {
@@ -223,7 +224,7 @@ describe('routes', () => {
         });
     });
 
-    describe("Запрос должен падать, ", () => {
+    describe("Запрос должен падать, если данных нет, или они проверяются не доходя до бд", () => {
         describe("если post /user/auth и тело запроса пустое", () => {
             it("и возвращать статус 400", (done) => {
                 chai.request(app)
@@ -390,6 +391,42 @@ describe('routes', () => {
             });
         });
     });
+
+    describe("Запрос должен падать, если данные есть, но они некорректно обрабатываются в бд,", () => {
+        describe("создаем еще одного пользователя post /user/auth", () => {
+            it("и возвращать статус 200", (done) => {
+                chai.request(app)
+                    .post('/user/auth')
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .send({"name": "test2", "password": "23jjUSjdsew814"})
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+
+                        expect(response).to.have.status(200);
+                        done();
+                    });
+            });
+        });
+
+        describe("если менять имя на уже существующее запрещено patch /user/id", () => {
+            it("и возвращать статус 400", (done) => {
+                chai.request(app)
+                    .patch('/user/' + user_id)
+                    .set('content-type', 'application/x-www-form-urlencoded')
+                    .send({"name": "test2"})
+                    .end((error: any, response: any) => {
+                        if (error) {
+                            done(error);
+                        }
+                        expect(response).to.have.status(400);
+                        done();
+                    });
+            });
+        });
+
+    })
 });
 
 
