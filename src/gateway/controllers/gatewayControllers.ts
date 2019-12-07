@@ -2,6 +2,12 @@ import {Request, Response} from "express";
 import * as fetch from "node-fetch";
 import {CommonErrorMessages, createError} from "../../common/commonError";
 import {winston_logger, winston_messages} from "../../common/winston/winstonLogger";
+import {
+    favsCirquitBreaker,
+    notifyCirquitBreaker, q_favs, q_story,
+    storyCirquitBreaker,
+    userCirquitBreaker
+} from "../routes/gatewayRoutes";
 
 export class GatewayControllers {
     public async getAllStories(req: Request, res: Response) {
@@ -14,6 +20,9 @@ export class GatewayControllers {
             const response = await fetch("http://localhost:3002/stories?pageNo="+pageNo+"&size="+size, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                storyCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const body = await response.json();
@@ -40,6 +49,9 @@ export class GatewayControllers {
             const story_response = await fetch("http://localhost:3002/stories/" + req.params.id, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                storyCirquitBreaker.upTry();
+                Promise.resolve();
             });
 
             const story = await story_response.json();
@@ -57,6 +69,9 @@ export class GatewayControllers {
             const user_response = await fetch("http://localhost:3001/users/" + story.author, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                userCirquitBreaker.upTry();
+                Promise.resolve();
             });
 
             const user = await user_response.json();
@@ -67,7 +82,11 @@ export class GatewayControllers {
                 winston_logger.error(user);
                 return res
                     .status(user_response.status)
-                    .send(user);
+                    .send({
+                        story_id: story.id,
+                        theme: story.theme,
+                        article: story.article
+                    });
             }
 
             winston_logger.info(winston_messages.OK);
@@ -92,6 +111,7 @@ export class GatewayControllers {
 
     public async authUser(req: Request, res: Response) {
         try {
+            console.log(req.body);
             winston_logger.info("POST /user/auth");
             winston_logger.info(winston_messages.AUTH);
             const user_response = await fetch("http://localhost:3001/users/", {
@@ -99,6 +119,9 @@ export class GatewayControllers {
                 body: JSON.stringify(req.body),
                 dataType: 'json',
                 headers: {'Content-Type': 'application/json'}
+            }).catch(() => {
+                userCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const user_body = await user_response.json();
@@ -106,21 +129,31 @@ export class GatewayControllers {
             if (user_response.status >= 400) {
                 winston_logger.error(winston_messages.BAD_REQUEST);
                 winston_logger.error(winston_messages.ERROR);
-                winston_logger.error(user_body);
+                winston_logger.error(user_body.user);
                 return res
                     .status(user_response.status)
-                    .send(user_body);
+                    .send(user_body.user);
             }
+            console.log(user_body.user.id);
 
             winston_logger.info('update notifications for user..');
             const notify_response = await fetch("http://localhost:3004/notifications/", {
                 method: 'post',
                 body: JSON.stringify({
-                   user_id: user_body.id,
-                   email: user_body.email,
-                   phone: user_body.phone
+                   user_id: user_body.user.id,
+                   email: user_body.user.email,
+                   phone: user_body.user.phone
                 }),
                 headers: {'Content-Type': 'application/json'}
+            }).catch(() => {
+                notifyCirquitBreaker.upTry();
+                if (user_body.cre_status === "created") {
+                    fetch("http://localhost:3001/users/" + user_body.user.id, {
+                        method: 'delete',
+                        headers: {'Content-Type': 'application/json'}
+                    });
+                }
+                return res.status(503).send();
             });
 
             const notify_body = await notify_response.json();
@@ -129,6 +162,12 @@ export class GatewayControllers {
                 winston_logger.error(winston_messages.BAD_REQUEST);
                 winston_logger.error(winston_messages.ERROR);
                 winston_logger.error(notify_body);
+                if (user_body.cre_status === "created") {
+                    fetch("http://localhost:3001/users/" + user_body.user.id, {
+                        method: 'delete',
+                        headers: {'Content-Type': 'application/json'}
+                    });
+                }
                 return res
                     .status(notify_response.status)
                     .send(notify_body);
@@ -139,7 +178,7 @@ export class GatewayControllers {
                 .status(200)
                 .send(
                     {
-                        user: user_body,
+                        user: user_body.user,
                         notifications: notify_body
                     }
                 );
@@ -163,6 +202,9 @@ export class GatewayControllers {
                 body: JSON.stringify(req.body),
                 dataType: 'json',
                 headers: {'Content-Type': 'application/json'}
+            }).catch(() => {
+                userCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const user_body = await user_response.json();
@@ -194,6 +236,9 @@ export class GatewayControllers {
                 }),
                 dataType: 'json',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                storyCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const story = await story_response.json();
@@ -225,6 +270,9 @@ export class GatewayControllers {
                 }),
                 dataType: 'json',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                storyCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const story = await story_response.json();
@@ -246,18 +294,39 @@ export class GatewayControllers {
 
     public async deleteStoryByUser(req: Request, res: Response) {
         try {
+            let failed = false;
             winston_logger.info("DELETE /user/:id/stories/:story_id");
             winston_logger.info('delete story from favourites..');
-            await fetch("http://localhost:3003/favourites/" + req.params.story_id, {
+            fetch("http://localhost:3003/favourites/" + req.params.story_id, {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                q_favs.push(() => fetch("http://localhost:3003/favourites/" + req.params.story_id, {
+                    method: 'delete',
+                    headers: {'Content-Type': 'application/json'},
+                }));
+                favsCirquitBreaker.upTry();
+                failed = true;
+                return Promise.resolve();
             });
 
             winston_logger.info('delete story...');
             const story_response = await fetch("http://localhost:3002/stories/" + req.params.story_id, {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                q_story.push(() => fetch("http://localhost:3002/stories/" + req.params.story_id, {
+                    method: 'delete',
+                    headers: {'Content-Type': 'application/json'},
+                }));
+                storyCirquitBreaker.upTry();
+                failed = true;
+                return Promise.resolve();
             });
+
+            if (failed) {
+                return res.status(200).send();
+            }
 
             const story = await story_response.json();
 
@@ -285,6 +354,9 @@ export class GatewayControllers {
             const fav_response = await fetch("http://localhost:3003/favourites/" + req.params.id + "?pageNo="+pageNo+"&size="+size, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                favsCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const fav = await fav_response.json();
@@ -316,6 +388,9 @@ export class GatewayControllers {
                 }),
                 dataType: 'json',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                favsCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const fav = await fav_response.json();
@@ -339,17 +414,20 @@ export class GatewayControllers {
         try {
             winston_logger.info("DELETE /user/:id/stories/:story_id/favourites");
             winston_logger.info('delete story from favourites..');
-            const notify_response = await fetch("http://localhost:3003/favourites/?user_id=" + req.params.id + "&story_id=" + req.params.story_id, {
+            const fav_response = await fetch("http://localhost:3003/favourites/?user_id=" + req.params.id + "&story_id=" + req.params.story_id, {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                favsCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
-            const notifications = await notify_response.json();
+            const favs = await fav_response.json();
 
             winston_logger.info(winston_messages.OK);
             return res
-                .status(notify_response.status)
-                .send(notifications);
+                .status(fav_response.status)
+                .send(favs);
 
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
@@ -368,6 +446,9 @@ export class GatewayControllers {
             const notify_response = await fetch("http://localhost:3004/notifications/" + req.params.id, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                notifyCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const notifications = await notify_response.json();
@@ -394,6 +475,9 @@ export class GatewayControllers {
             const user_response = await fetch("http://localhost:3001/users/" + req.params.id, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                userCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const user_settings = await user_response.json();
@@ -433,6 +517,9 @@ export class GatewayControllers {
                 body: JSON.stringify(req.body),
                 dataType: 'json',
                 headers: {'Content-Type': 'application/json'},
+            }).catch(() => {
+                notifyCirquitBreaker.upTry();
+                return res.status(503).send();
             });
 
             const notifications = await notify_response.json();

@@ -49,6 +49,7 @@ export class NotificationControllers extends CommonControllers<NotificationManag
             const phone:boolean = !!req.body['phone'];
 
             winston_logger.info(winston_messages.TEST_UUID);
+            console.log(user_uuid);
             if (this.uuid_regex.test(user_uuid)) {
                 winston_logger.info(winston_messages.UUID_OK);
                 winston_logger.info(winston_messages.CONNECT_DB);

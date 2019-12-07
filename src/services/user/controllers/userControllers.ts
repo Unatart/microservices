@@ -50,18 +50,25 @@ export class UserControllers extends CommonControllers<UserManager> {
             const phone = req.body['phone'] || "";
             winston_logger.info(winston_messages.VALID_PASSWORD);
             winston_logger.info('check if name is !undefined..');
+            console.log(password, name);
             if (this.password_regex.test(password) && name) {
                 winston_logger.info(winston_messages.PASSWORD_OK);
                 winston_logger.info(winston_messages.CONNECT_DB);
 
                 const result = await this.db_manager.connectUser(name, password, email, phone);
+                let avail_user;
+                let status;
+                [avail_user, status] = [...result];
 
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
                 res
                     .status(201)
-                    .send(result);
+                    .send({
+                        user: avail_user,
+                        cre_status: status
+                    });
             } else {
                 winston_logger.error(winston_messages.PASSWORD_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);

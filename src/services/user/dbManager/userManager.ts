@@ -30,14 +30,14 @@ export class UserManager extends CommonDbManager<User> {
             };
 
             const user = await this.repository.create(user_data);
-            return await this.repository.save(user);
+            return [await this.repository.save(user), "created"];
         }
 
         if (existed_user.password !== createHmac('sha256', password).digest('hex')) {
             throw Error(CommonErrorMessages.INVALID_PASSWORD)
         }
 
-        return existed_user;
+        return [existed_user, "existed"];
     }
 
     /**

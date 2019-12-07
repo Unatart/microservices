@@ -9,7 +9,7 @@
     "start_story": "NODE_ENV=develop node src/services/story/index.js",
     "start_notification": "NODE_ENV=develop node src/services/notification/index.js",
     "start_favourites": "NODE_ENV=develop node src/services/favourites/index.js",
-    "start": "node src/gateway/index.js",
+    "start": "PORT=5000 node src/gateway/index.js",
     "test": "TEST_PORT=4000 NODE_ENV=test mocha -r ts-node/register tests/gateway.spec.ts -timeout 20000 --exit",
     "coverage": "nyc npm test report --reporter=lcov --reporter=text"
   },
@@ -28,6 +28,7 @@
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "js-logger": "^1.6.0",
