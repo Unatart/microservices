@@ -84,17 +84,20 @@ export const routes = (app, controllers) => {
     // Без авторизации
     app.get("/stories", storyMiddleware, controllers.getAllStories);
 
+    // деградация функциональности
     app.get("/stories/:id", storyMiddleware, userMiddleware, controllers.getOneStory);
 
     // Необходима авторизация
+    // если что то не сработало то отмена
     app.post("/user/auth", userMiddleware, notifyMiddleware, controllers.authUser);
 
     app.patch("/user/:id", userMiddleware, controllers.updateUserInfo);
 
     app.post("/user/:id/stories", userMiddleware, storyMiddleware, controllers.createStoryByUser);
 
-    app.patch("/user/:id/stories/:story_id", userMiddleware, storyMiddleware, controllers.updateStoryByUser);
+    // app.patch("/user/:id/stories/:story_id", userMiddleware, storyMiddleware, controllers.updateStoryByUser);
 
+    // очередь
     app.delete("/user/:id/stories/:story_id", favsMiddleware, storyMiddleware, controllers.deleteStoryByUser);
 
     app.get("/user/:id/favourites", favsMiddleware, controllers.getUserFavs);

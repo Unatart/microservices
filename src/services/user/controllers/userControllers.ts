@@ -94,7 +94,7 @@ export class UserControllers extends CommonControllers<UserManager> {
             const body = req.body;
             winston_logger.info(winston_messages.TEST_UUID);
             winston_logger.info('test request body != undefined..');
-            if (body && this.uuid_regex.test(req.params.id)) {
+            if (body && this.uuid_regex.test(req.params.id) && this.password_regex.test(body.password)) {
                 winston_logger.info(winston_messages.UUID_OK);
                 winston_logger.info(winston_messages.CONNECT_DB);
 
@@ -112,7 +112,7 @@ export class UserControllers extends CommonControllers<UserManager> {
 
                 return res
                     .status(400)
-                    .send(createError('Incorrect body request'));
+                    .send(createError(winston_messages.PASSWORD_INCORRECT));
             }
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);

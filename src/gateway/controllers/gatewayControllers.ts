@@ -81,7 +81,7 @@ export class GatewayControllers {
                 winston_logger.error(winston_messages.ERROR);
                 winston_logger.error(user);
                 return res
-                    .status(user_response.status)
+                    .status(200)
                     .send({
                         story_id: story.id,
                         theme: story.theme,
@@ -98,7 +98,6 @@ export class GatewayControllers {
                     author: user.name,
                     article: story.article
                 });
-
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
@@ -132,9 +131,8 @@ export class GatewayControllers {
                 winston_logger.error(user_body.user);
                 return res
                     .status(user_response.status)
-                    .send(user_body.user);
+                    .send(user_body);
             }
-            console.log(user_body.user.id);
 
             winston_logger.info('update notifications for user..');
             const notify_response = await fetch("http://localhost:3004/notifications/", {
@@ -258,39 +256,39 @@ export class GatewayControllers {
         }
     }
 
-    public async updateStoryByUser(req: Request, res: Response) {
-        try {
-            winston_logger.info("PATCH /user/:id/stories/:story_id");
-            winston_logger.info('update story info..');
-            const story_response = await fetch("http://localhost:3002/stories/" + req.params.story_id, {
-                method: 'patch',
-                body: JSON.stringify({
-                    ...req.body,
-                    author: req.params.id
-                }),
-                dataType: 'json',
-                headers: {'Content-Type': 'application/json'},
-            }).catch(() => {
-                storyCirquitBreaker.upTry();
-                return res.status(503).send();
-            });
-
-            const story = await story_response.json();
-
-            winston_logger.info(winston_messages.OK);
-            return res
-                .status(story_response.status)
-                .send(story);
-
-        } catch (error) {
-            winston_logger.error(winston_messages.CATCH + error.message);
-            winston_logger.error(winston_messages.ERROR);
-
-            return res
-                .status(400)
-                .send(createError(error.message));
-        }
-    }
+    // public async updateStoryByUser(req: Request, res: Response) {
+    //     try {
+    //         winston_logger.info("PATCH /user/:id/stories/:story_id");
+    //         winston_logger.info('update story info..');
+    //         const story_response = await fetch("http://localhost:3002/stories/" + req.params.story_id, {
+    //             method: 'patch',
+    //             body: JSON.stringify({
+    //                 ...req.body,
+    //                 author: req.params.id
+    //             }),
+    //             dataType: 'json',
+    //             headers: {'Content-Type': 'application/json'},
+    //         }).catch(() => {
+    //             storyCirquitBreaker.upTry();
+    //             return res.status(503).send();
+    //         });
+    //
+    //         const story = await story_response.json();
+    //
+    //         winston_logger.info(winston_messages.OK);
+    //         return res
+    //             .status(story_response.status)
+    //             .send(story);
+    //
+    //     } catch (error) {
+    //         winston_logger.error(winston_messages.CATCH + error.message);
+    //         winston_logger.error(winston_messages.ERROR);
+    //
+    //         return res
+    //             .status(400)
+    //             .send(createError(error.message));
+    //     }
+    // }
 
     public async deleteStoryByUser(req: Request, res: Response) {
         try {
@@ -414,6 +412,7 @@ export class GatewayControllers {
         try {
             winston_logger.info("DELETE /user/:id/stories/:story_id/favourites");
             winston_logger.info('delete story from favourites..');
+            console.log(req.params);
             const fav_response = await fetch("http://localhost:3003/favourites/?user_id=" + req.params.id + "&story_id=" + req.params.story_id, {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},

@@ -48,6 +48,9 @@ export class UserManager extends CommonDbManager<User> {
     public async updateUser(id:string, body:any) {
         const user = await this.repository.findOne(id);
         if (user) {
+            if (user.password !== createHmac('sha256', body.password).digest('hex')) {
+                throw Error(CommonErrorMessages.INVALID_PASSWORD)
+            }
             if (user.name !== body.name) {
                 const is_user_name_exist = await this.repository.findOne({where: {name: body.name}});
                 if (is_user_name_exist) {
