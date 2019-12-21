@@ -50,7 +50,6 @@ export class UserControllers extends CommonControllers<UserManager> {
             const phone = req.body['phone'] || "";
             winston_logger.info(winston_messages.VALID_PASSWORD);
             winston_logger.info('check if name is !undefined..');
-            console.log(password, name);
             if (this.password_regex.test(password) && name) {
                 winston_logger.info(winston_messages.PASSWORD_OK);
                 winston_logger.info(winston_messages.CONNECT_DB);

@@ -121,6 +121,7 @@ export class FavouritesControllers extends CommonControllers<FavouritesManager> 
 
     public deleteFavouritesByStory = async (req: Request, res: Response) => {
         try {
+            console.log("HERE");
             const story_uuid = req.params.story_id;
             winston_logger.info(winston_messages.TEST_UUID);
 

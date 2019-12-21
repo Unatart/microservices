@@ -1,72 +1,5 @@
-import * as fetch from "node-fetch";
+import {cirquitBreaker} from "../../common/cirquitBreaker/cirquitBreaker";
 
-interface ICounter {
-    timeout_ms:number;
-    try:number;
-    N:number;
-}
-
-class QueueForDeleteStory {
-    public push(callback:fetch) {
-        this.q.push(callback);
-    }
-
-    public pop() {
-        const req:fetch = this.q.pop();
-        console.log(req);
-        req().catch(() => this.q.push(req));
-    }
-
-    public q = [];
-}
-
-
-class cirquitBreaker {
-    constructor(timeout_ms, N, name) {
-        this.service = {
-            timeout_ms: timeout_ms,
-            N: N,
-            try: 0
-        };
-        this.name = name;
-    }
-
-    public middleware() {
-        const self = this;
-        return function(req, res, next) {
-            if (self.isBlocked()) {
-                return res.status(503).send();
-            }
-            if (self.name === "story" && q_story.q.length !== 0) {
-                q_story.pop()
-            }
-            if (self.name === "favs" && q_favs.q.length !== 0) {
-                q_favs.pop()
-            }
-            next();
-        }
-    }
-
-    public upTry() {
-        this.service.try = this.service.try + 1;
-        console.log('up');
-        if (this.service.N === this.service.try) {
-            setTimeout(() => {
-                this.service.try = 0;
-            }, this.service.timeout_ms);
-        }
-    }
-
-    public isBlocked() {
-        return this.service.N === this.service.try;
-    }
-
-    public service:ICounter;
-    private name:string;
-}
-
-export const q_favs:QueueForDeleteStory = new QueueForDeleteStory();
-export const q_story:QueueForDeleteStory = new QueueForDeleteStory();
 
 export const userCirquitBreaker = new cirquitBreaker(30000, 5, "user");
 const userMiddleware = userCirquitBreaker.middleware();
@@ -79,6 +12,8 @@ const notifyMiddleware = notifyCirquitBreaker.middleware();
 
 export const favsCirquitBreaker = new cirquitBreaker(50000, 3, "favs");
 const favsMiddleware = favsCirquitBreaker.middleware();
+
+
 
 export const routes = (app, controllers) => {
     // Без авторизации
@@ -95,10 +30,8 @@ export const routes = (app, controllers) => {
 
     app.post("/user/:id/stories", userMiddleware, storyMiddleware, controllers.createStoryByUser);
 
-    // app.patch("/user/:id/stories/:story_id", userMiddleware, storyMiddleware, controllers.updateStoryByUser);
-
     // очередь
-    app.delete("/user/:id/stories/:story_id", favsMiddleware, storyMiddleware, controllers.deleteStoryByUser);
+    app.delete("/user/:id/stories/:story_id", storyMiddleware, favsMiddleware, controllers.deleteStoryByUser);
 
     app.get("/user/:id/favourites", favsMiddleware, controllers.getUserFavs);
 
