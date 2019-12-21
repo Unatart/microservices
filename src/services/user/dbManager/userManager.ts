@@ -1,7 +1,7 @@
-import {User} from "../entity/user";
 import {createHmac} from "crypto";
 import {CommonDbManager} from "../../../common/commonDbManager";
 import {CommonErrorMessages} from "../../../common/commonError";
+import {User} from "../../../auth/entity/UserEntity";
 
 export class UserManager extends CommonDbManager<User> {
     public async getUser(id:string) {
@@ -11,33 +11,6 @@ export class UserManager extends CommonDbManager<User> {
         }
 
         throw Error(CommonErrorMessages.INVALID_USER_UUID);
-    }
-
-    /**
-     * Вход в профиль,
-     * если пользователь ровно с таким именем и паролем существует, то отдаем данные существующего,
-     * если пользователь не существует, то создаем и отдаем его данные, если не был найден пользователь с таким же именем, но другим паролем
-     */
-    public async connectUser(name:string, password:string, email:string, phone:string) {
-        const existed_user = await this.repository.findOne({where: {name: name}});
-
-        if (!existed_user) {
-            const user_data = {
-                name: name,
-                password: password,
-                email: email,
-                phone: phone
-            };
-
-            const user = await this.repository.create(user_data);
-            return [await this.repository.save(user), "created"];
-        }
-
-        if (existed_user.password !== createHmac('sha256', password).digest('hex')) {
-            throw Error(CommonErrorMessages.INVALID_PASSWORD)
-        }
-
-        return [existed_user, "existed"];
     }
 
     /**
@@ -63,12 +36,4 @@ export class UserManager extends CommonDbManager<User> {
             throw Error(CommonErrorMessages.INVALID_USER_UUID);
         }
     };
-
-    public async deleteUser(id:string) {
-        const is_user_exist = await this.repository.findOne(id);
-        if (is_user_exist) {
-            return await this.repository.delete(id);
-        }
-        throw Error(CommonErrorMessages.INVALID_USER_UUID);
-    }
 }

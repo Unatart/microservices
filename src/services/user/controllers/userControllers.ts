@@ -42,52 +42,6 @@ export class UserControllers extends CommonControllers<UserManager> {
         return res;
     };
 
-    public connectUser = async (req: Request, res: Response) => {
-        try {
-            const name = req.body["name"];
-            const password = req.body["password"];
-            const email = req.body['email'] || "";
-            const phone = req.body['phone'] || "";
-            winston_logger.info(winston_messages.VALID_PASSWORD);
-            winston_logger.info('check if name is !undefined..');
-            if (this.password_regex.test(password) && name) {
-                winston_logger.info(winston_messages.PASSWORD_OK);
-                winston_logger.info(winston_messages.CONNECT_DB);
-
-                const result = await this.db_manager.connectUser(name, password, email, phone);
-                let avail_user;
-                let status;
-                [avail_user, status] = [...result];
-
-                winston_logger.info(winston_messages.OK);
-                winston_logger.info(result);
-
-                res
-                    .status(201)
-                    .send({
-                        user: avail_user,
-                        cre_status: status
-                    });
-            } else {
-                winston_logger.error(winston_messages.PASSWORD_INCORRECT);
-                winston_logger.error(winston_messages.BAD_REQUEST);
-
-                res
-                    .status(400)
-                    .send(createError('Invalid password'));
-            }
-        } catch (error) {
-            winston_logger.error(winston_messages.CATCH + error.message);
-            winston_logger.error(winston_messages.ERROR);
-
-            res
-                .status(400)
-                .send(createError(error.message));
-        }
-
-        return res;
-    };
-
     public updateUser = async (req: Request, res: Response) => {
         try {
             const body = req.body;
@@ -121,42 +75,6 @@ export class UserControllers extends CommonControllers<UserManager> {
                 .status(400)
                 .send(createError(error.message));
         }
-    };
-
-    public deleteUser = async (req: Request, res: Response) => {
-        try {
-            const user_uuid = req.params.id;
-            winston_logger.info(winston_messages.TEST_UUID);
-            if (this.uuid_regex.test(user_uuid)) {
-                winston_logger.info(winston_messages.UUID_OK);
-                winston_logger.info(winston_messages.CONNECT_DB);
-
-                const result = await this.db_manager.deleteUser(req.params.id);
-
-                winston_logger.info(winston_messages.OK);
-                winston_logger.info(result);
-
-                res
-                    .status(200)
-                    .send(result);
-            } else {
-                winston_logger.error(winston_messages.UUID_INCORRECT);
-                winston_logger.error(winston_messages.BAD_REQUEST);
-
-                res
-                    .status(400)
-                    .send(createError('Invalid user uuid'));
-            }
-        } catch (error) {
-            winston_logger.error(winston_messages.CATCH + error.message);
-            winston_logger.error(winston_messages.ERROR);
-
-            res
-                .status(400)
-                .send(createError(error.message));
-        }
-
-        return res;
     };
 
     /**

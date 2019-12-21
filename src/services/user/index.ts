@@ -5,8 +5,8 @@ import {UserManager} from "./dbManager/userManager";
 import {userRoutes} from "./routes/userRoutes";
 import {database} from "../../common/db_config";
 import {UserControllers} from "./controllers/userControllers";
-import {User} from "./entity/user";
 import {winston_logger} from "../../common/winston/winstonLogger";
+import {User} from "../../auth/entity/UserEntity";
 
 const app = express();
 app.use(bodyParser.json());

@@ -46,6 +46,7 @@ class Queue {
         })
     }
 
+    //TODO: then response === 449 => + token & send again
     private sendRequest(data:any):void {
         fetch(data.url, {
             method: data.method,
