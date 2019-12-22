@@ -1,52 +1,38 @@
 import * as fetch from "node-fetch";
 
-export const getFavs = async (id, pageNo, size, token) => {
-    return await fetch("http://localhost:3003/favourites/" + id + "?pageNo="+pageNo+"&size="+size, {
+export const getFavs = (id, pageNo, size, token) => {
+    return fetch("http://localhost:3003/favourites/" + id + "?pageNo="+pageNo+"&size="+size+
+        "&key="+process.env.story_key +"&secret=" + process.env.story_secret + "&token=" + token, {
         method: 'get',
-        body: JSON.stringify({
-            key: process.env.favs_key,
-            secret: process.env.favs_secret,
-            token: token
-        }),
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const makeFavs = async (id, story_id, token) => {
-    return await fetch("http://localhost:3003/favourites/", {
+export const makeFavs = (id, story_id, token) => {
+    return fetch("http://localhost:3003/favourites/" +
+        "?key=" + process.env.story_key + "&secret=" + process.env.story_secret + "&token=" + token, {
         method: 'post',
         body: JSON.stringify({
             user_id: id,
-            story_id: story_id,
-            key: process.env.favs_key,
-            secret: process.env.favs_secret,
-            token: token
+            story_id: story_id
         }),
         dataType: 'json',
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const deleteFavs = async (id, story_id, token) => {
-    return await fetch("http://localhost:3003/favourites/?user_id=" + id + "&story_id=" + story_id, {
+export const deleteFavs = (id, story_id, token) => {
+    return fetch("http://localhost:3003/favourites/?user_id=" + id + "&story_id=" + story_id +
+        "&key=" + process.env.story_key + "&secret=" + process.env.story_secret + "&token=" + token, {
         method: 'delete',
-        body: JSON.stringify({
-            key: process.env.favs_key,
-            secret: process.env.favs_secret,
-            token: token
-        }),
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const deleteFavsByStory = async (story_id, token) => {
-    return await fetch("http://localhost:3003/favourites/" + story_id, {
+export const deleteFavsByStory = (story_id, token) => {
+    return fetch("http://localhost:3003/favourites/" + story_id +
+        "?key="+process.env.story_key + "&secret=" + process.env.story_secret + "&token=" + token, {
         method: 'delete',
-        body: {
-            key: process.env.favs_key,
-            secret: process.env.favs_secret,
-            token: token
-        },
         headers: {'Content-Type': 'application/json'},
     })
 };

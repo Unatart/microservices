@@ -5,18 +5,18 @@ export class Session {
     @PrimaryGeneratedColumn("uuid")
     id:string;
 
-    @Column({type: "uuid"})
+    @Column({type: "uuid", nullable: true})
     user_id:string;
 
-    @Column({type: "string"})
+    @Column({nullable: true})
     service_name:string;
 
-    @Column({type: "string"})
+    @Column()
     token:string;
 
-    @Column({type: "string"})
+    @Column({nullable: true})
     refresh_token:string;
 
-    @Column({type: "timestamp"})
+    @Column()
     expires:string;
 }

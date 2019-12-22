@@ -1,41 +1,33 @@
 import * as fetch from "node-fetch";
 
-export const updateNotify = async (id, body, token) => {
-    return await fetch("http://localhost:3004/notifications/" + id, {
+export const updateNotify = (id, body, token) => {
+    return fetch("http://localhost:3004/notifications/" + id +
+        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'patch',
         body: JSON.stringify({
-            ...body,
-            key: process.env.notify_key,
-            secret: process.env.notify_secret,
-            token: token
+            ...body
         }),
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const createNotify = async (body, token) => {
-    return await fetch("http://localhost:3004/notifications/", {
+export const createNotify = (body, token) => {
+    return fetch("http://localhost:3004/notifications/" +
+        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'post',
         body: JSON.stringify({
             user_id: body.user_id,
             email: body.email,
             phone: body.phone,
-            key: process.env.notify_key,
-            secret: process.env.notify_secret,
-            token: token
         }),
         headers: {'Content-Type': 'application/json'}
     })
 };
 
-export const getNotify = async (id, token) => {
-    return await fetch("http://localhost:3004/notifications/" + id, {
+export const getNotify = (id, token) => {
+    return fetch("http://localhost:3004/notifications/" + id +
+        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'get',
-        body: JSON.stringify({
-            key: process.env.notify_key,
-            secret: process.env.notify_secret,
-            token: token
-        }),
         headers: {'Content-Type': 'application/json'},
     })
 };

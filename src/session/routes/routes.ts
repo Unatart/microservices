@@ -1,13 +1,13 @@
-export const routes = (app, controllers) => {
-    app.get("/token/:token", controllers.checkTokenForService);
+export const sessionRoutes = (app, controllers) => {
+    app.get("/token/:token/service/:service_name", controllers.checkTokenForService);
 
-    app.get("/token", controllers.checkTokenForUser);
+    app.get("/user/:user_id/token/:token", controllers.checkTokenForUser);
 
-    app.patch("/token/", controllers.updateTokenForUser);
+    app.patch("/user/:user_id/token/", controllers.updateTokenForUser);
 
-    app.patch("/token/:service_name", controllers.updateTokenForService);
+    app.patch("/token/:token/service/:service_name", controllers.updateTokenForService);
 
-    app.post("/token", controllers.createTokenForUser);
+    app.post("/user/:user_id/token", controllers.createTokenForUser);
 
     app.post("/token/:service_name", controllers.createTokenForService);
 };

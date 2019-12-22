@@ -2,10 +2,11 @@ import {CommonControllers} from "../../common/commonControllers";
 import {AuthDBManager} from "../dbManager/authDBManager";
 import {Request, Response} from "express";
 import {createError} from "../../common/commonError";
+import * as fetch from "node-fetch";
 
 export class AuthControllers extends CommonControllers<AuthDBManager> {
     public connectUser = async (req: Request, res: Response) => {
-        try {
+        // try {
             const name = req.body["name"];
             const password = req.body["password"];
             if (this.password_regex.test(password) && name) {
@@ -13,20 +14,19 @@ export class AuthControllers extends CommonControllers<AuthDBManager> {
                 let avail_user;
                 let status;
                 [avail_user, status] = [...result];
-                if (status === "created") {
-                    const session_response = await fetch("http://localhost:3007/token", {
+                console.log(status, avail_user);
+                if (status === "create") {
+                    const session_response = await fetch("http://localhost:3007/user/" + avail_user.user_id + "/token", {
                         method: "post",
-                        body: JSON.stringify({
-                            user_id: avail_user.user_id
-                        }),
-                        headers: {'Content-Type': 'application/json'}
+                        headers: {'Content-Type': 'application/json'},
                     }).catch(() => {
                         return res.status(503).send();
                     });
 
-                    const session = session_response.json();
+                    const session = await session_response.json();
 
                     if (session_response.status > 400) {
+
                         return res
                             .status(+session_response.status)
                             .send(session);
@@ -39,17 +39,17 @@ export class AuthControllers extends CommonControllers<AuthDBManager> {
                             session: session
                         })
                 } else {
-                    const session_response = await fetch("http://localhost:3007/token", {
+                    const session_response = await fetch("http://localhost:3007/user/" + avail_user.user_id + "/token", {
                         method: "patch",
+                        headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({
                             user_id: avail_user.user_id
                         }),
-                        headers: {'Content-Type': 'application/json'}
                     }).catch(() => {
                         return res.status(503).send();
                     });
 
-                    const session = session_response.json();
+                    const session = await session_response.json();
 
                     if (session_response.status > 400) {
                         return res
@@ -65,17 +65,15 @@ export class AuthControllers extends CommonControllers<AuthDBManager> {
                         })
                 }
             } else {
-                res
+                return res
                     .status(400)
                     .send(createError('Invalid password'));
             }
-        } catch (error) {
-            res
-                .status(400)
-                .send(createError(error.message));
-        }
-
-        return res;
+        // } catch (error) {
+        //     return res
+        //         .status(400)
+        //         .send(createError(error.message));
+        // }
     };
 
     /**

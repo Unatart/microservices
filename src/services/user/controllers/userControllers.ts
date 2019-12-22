@@ -19,14 +19,14 @@ export class UserControllers extends CommonControllers<UserManager> {
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError('Invalid user_uuid'));
             }
@@ -34,12 +34,10 @@ export class UserControllers extends CommonControllers<UserManager> {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public updateUser = async (req: Request, res: Response) => {

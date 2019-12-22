@@ -1,5 +1,6 @@
 import {winston_logger} from "../winston/winstonLogger";
 import {Request, Response, NextFunction} from "express";
+import * as fetch from "node-fetch";
 
 export class CommonMiddleware {
     constructor(init_name:string) {
@@ -10,31 +11,37 @@ export class CommonMiddleware {
         const self = this;
         return async function(req:Request, res:Response, next:NextFunction) {
             winston_logger.info("COMMON_MIDDLEWARE: " + self.name);
-            if (req.body.key === process.env.KEY && req.body.secret === process.env.SECRET) {
-                if (req.body.token) {
-                    return await fetch("http://localhost:3007/token/" + req.body.token, {
+            console.log(req.query.key, req.query.secret, req.query.token);
+            if (req.query.key === process.env.KEY && req.query.secret === process.env.SECRET) {
+                if (req.query.token && req.query.token !== "undefined") {
+                    const result = await fetch("http://localhost:3007/token/" + req.query.token + "/service/" + self.name, {
                         method: "get",
-                        body: JSON.stringify({
-                            service_name: self.name
-                        }),
-                        headers: {'Content-Type': 'application/json'}
-                    }).then((response) => {
-                        if (response.status === 200) {
-                            return next;
-                        }
-                        if (response.status > 400) {
-                            // TODO: update
-                        }
+                        headers: {'Content-Type': 'application/json'},
                     });
+
+                    if (result.status === 200) {
+                        next();
+                    } else {
+                        return res
+                            .status(401)
+                            .send(JSON.stringify({message: 'expired token'}));
+                    }
                 } else {
-                    return await fetch("http://localhost:3007/token/" + self.name, {
+                    console.log(self);
+                    const result = await fetch("http://localhost:3007/token/" + self.name, {
                         method: "post",
                         headers: {'Content-Type': 'application/json'}
-                    }).then((result) => result.json())
-                        .then((data) => res.status(449).send(data.token));
+                    });
+
+                    const response = await result.json();
+                    if (result.status === 201) {
+                        return res.status(449).send(response)
+                    }
+
+                    return res.status(401).send();
                 }
             } else {
-                return res.status(401).send();
+                return res.sendStatus(401).end();
             }
         }
     }
@@ -43,14 +50,10 @@ export class CommonMiddleware {
         const self = this;
         return async function(req:Request, res:Response, next:NextFunction) {
             winston_logger.info("COMMON_MIDDLEWARE: " + self.name);
-            // TODO: токен будет в хэдере
-            if (req.params.token && req.params.user_id) {
-                return await fetch("http://localhost:3007/token", {
+            if (/<(.*?)>/.exec(req.header('authorization'))[1] && req.params.id) {
+                console.log('check token...');
+                return await fetch("http://localhost:3007/user/"+req.params.id+"/token/"+req.params.token, {
                     method: "get",
-                    body: JSON.stringify({
-                        user_id: req.params.user_id,
-                        token: req.params.token
-                    }),
                     headers: {'Content-Type': 'application/json'}
                 }).then(() => next());
             } else {

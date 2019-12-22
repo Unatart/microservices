@@ -19,14 +19,14 @@ export class StoryControllers extends CommonControllers<StoryManager> {
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError('Incorrect story uuid'));
             }
@@ -34,12 +34,10 @@ export class StoryControllers extends CommonControllers<StoryManager> {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public getStories = async (req: Request, res: Response) => {
@@ -55,19 +53,17 @@ export class StoryControllers extends CommonControllers<StoryManager> {
             winston_logger.info(winston_messages.OK);
             winston_logger.info(results);
 
-            res
+            return res
                 .status(200)
                 .send(results);
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public createStory = async (req: Request, res: Response) => {
@@ -81,14 +77,14 @@ export class StoryControllers extends CommonControllers<StoryManager> {
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(201)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError('Incorrect author uuid!'));
             }
@@ -96,12 +92,10 @@ export class StoryControllers extends CommonControllers<StoryManager> {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public updateStory = async (req: Request, res: Response) => {
@@ -117,14 +111,14 @@ export class StoryControllers extends CommonControllers<StoryManager> {
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError('Incorrect story uuid'));
             }
@@ -132,12 +126,10 @@ export class StoryControllers extends CommonControllers<StoryManager> {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public deleteStory = async (req: Request, res: Response) => {
@@ -153,14 +145,14 @@ export class StoryControllers extends CommonControllers<StoryManager> {
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError('Incorrect story uuid'));
             }
@@ -168,11 +160,9 @@ export class StoryControllers extends CommonControllers<StoryManager> {
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 }

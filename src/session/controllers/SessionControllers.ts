@@ -5,7 +5,8 @@ import {Request, Response} from "express";
 export class SessionControllers extends CommonControllers<SessionDBManager> {
     public createTokenForUser = async (req:Request, res:Response) => {
         try {
-            const result = await this.db_manager.createTokenForUser(req.body.user_id);
+            console.log(req.params.user_id);
+            const result = await this.db_manager.createTokenForUser(req.params.user_id);
 
             res
                 .status(201)
@@ -13,13 +14,13 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
         } catch (error) {
             return res
                 .status(400)
-                .send();
+                .send(error.message);
         }
     };
 
     public createTokenForService = async (req:Request, res:Response) => {
         try {
-            const result = await this.db_manager.createTokenForUser(req.params.service_name);
+            const result = await this.db_manager.createTokenForService(req.params.service_name);
 
             res
                 .status(201)
@@ -34,7 +35,8 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
     public checkTokenForService = async (req:Request, res:Response) =>  {
         try {
             const token = req.params.token;
-            const service_name = req.body.service_name;
+            const service_name = req.params.service_name;
+            console.log(token, service_name);
             const result = await this.db_manager.checkToken(token, service_name);
 
             if (result) {
@@ -55,8 +57,8 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
 
     public checkTokenForUser = async (req:Request, res:Response) => {
         try {
-            const token = req.body.token;
-            const user_id = req.body.user_id;
+            const token = req.params.token;
+            const user_id = req.params.user_id;
             const result = await this.db_manager.checkTokenForUser(token, user_id);
 
             if (result) {
@@ -77,7 +79,7 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
 
     public updateTokenForUser = async (req:Request, res:Response) => {
         try {
-            const user_id = req.body.user_id;
+            const user_id = req.params.user_id;
             const result = await this.db_manager.updateTokenForUser(user_id);
 
             if (result) {
@@ -98,8 +100,9 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
 
     public updateTokenForService = async (req:Request, res:Response) => {
         try {
+            const token = req.params.token;
             const service_name = req.params.service_name;
-            const result = await this.db_manager.updateTokenForService(service_name);
+            const result = await this.db_manager.updateTokenForService(token, service_name);
 
             if (result) {
                 res

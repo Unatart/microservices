@@ -25,6 +25,6 @@ createConnection(auth_database).then(() => {
     const auth_controller = new AuthControllers(auth_db_manager);
     routes(app, auth_controller);
     app.listen(port, () => {
-        winston_logger.info(`API FAVOURITES running in http://localhost:${port}`);
+        winston_logger.info(`API AUTH running in http://localhost:${port}`);
     });
 });

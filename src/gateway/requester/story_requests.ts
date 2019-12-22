@@ -1,52 +1,38 @@
 import * as fetch from "node-fetch";
 
-export const getStories = async (pageNo, size, token) => {
-    return await fetch("http://localhost:3002/stories?pageNo="+pageNo+"&size="+size, {
+export const getStories = (pageNo, size, token) => {
+    return fetch("http://localhost:3002/stories?pageNo="+pageNo+"&size="+size +
+        "&key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'get',
-        body: JSON.stringify({
-            key: process.env.story_key,
-            secret: process.env.story_secret,
-            token: token
-        }),
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const getOneStory = async (id, token) => {
-    return await fetch("http://localhost:3002/stories/" + id, {
+export const getOneStory = (id, token) => {
+    return fetch("http://localhost:3002/stories/" + id +
+        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'get',
-        body: JSON.stringify({
-            key: process.env.story_key,
-            secret: process.env.story_secret,
-            token: token
-        }),
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const createStory = async (id, body, token) => {
-    return await fetch("http://localhost:3002/stories/", {
+export const createStory = (id, body, token) => {
+    return fetch("http://localhost:3002/stories/" +
+        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'post',
         body: JSON.stringify({
             ...body,
-            author: id,
-            key: process.env.story_key,
-            secret: process.env.story_secret,
-            token: token
+            author: id
         }),
         dataType: 'json',
         headers: {'Content-Type': 'application/json'},
     })
 };
 
-export const deleteStory = async (id, token) => {
-    return await fetch("http://localhost:3002/stories/" + id, {
+export const deleteStory = (id, token) => {
+    return fetch("http://localhost:3002/stories/" + id +
+        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
         method: 'delete',
-        body: JSON.stringify({
-            key: process.env.story_key,
-            secret: process.env.story_secret,
-            token: token
-        }),
         headers: {'Content-Type': 'application/json'},
     })
 };

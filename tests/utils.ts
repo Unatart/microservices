@@ -4,7 +4,6 @@ import * as bodyParser from "body-parser";
 import {createConnection} from "typeorm";
 import {database} from "../src/common/db_config";
 import {UserManager} from "../src/services/user/dbManager/userManager";
-import {User} from "../src/services/user/entity/user";
 import {UserControllers} from "../src/services/user/controllers/userControllers";
 import {userRoutes} from "../src/services/user/routes/userRoutes";
 import {StoryManager} from "../src/services/story/dbManager/storyManager";
@@ -20,6 +19,7 @@ import {Notification} from "../src/services/notification/entity/notification";
 import {NotificationControllers} from "../src/services/notification/controllers/notificationControllers";
 import {notificationRoutes} from "../src/services/notification/routes/notificationRoutes";
 import {winston_logger} from "../src/common/winston/winstonLogger";
+import {User} from "../src/auth/entity/UserEntity";
 
 export const lorem = new LoremIpsum({
     sentencesPerParagraph: {

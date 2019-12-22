@@ -19,14 +19,14 @@ export class NotificationControllers extends CommonControllers<NotificationManag
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError(CommonErrorMessages.INVALID_USER_UUID));
             }
@@ -34,12 +34,10 @@ export class NotificationControllers extends CommonControllers<NotificationManag
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public createNotification = async (req: Request, res:Response) => {
@@ -58,14 +56,14 @@ export class NotificationControllers extends CommonControllers<NotificationManag
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(201)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError(CommonErrorMessages.INVALID_USER_UUID));
             }
@@ -73,12 +71,10 @@ export class NotificationControllers extends CommonControllers<NotificationManag
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public updateNotification = async (req: Request, res:Response) => {
@@ -97,14 +93,14 @@ export class NotificationControllers extends CommonControllers<NotificationManag
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError(CommonErrorMessages.INVALID_USER_UUID));
             }
@@ -112,12 +108,10 @@ export class NotificationControllers extends CommonControllers<NotificationManag
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(400)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 
     public deleteNotification = async (req: Request, res:Response) => {
@@ -134,14 +128,14 @@ export class NotificationControllers extends CommonControllers<NotificationManag
                 winston_logger.info(winston_messages.OK);
                 winston_logger.info(result);
 
-                res
+                return res
                     .status(200)
                     .send(result);
             } else {
                 winston_logger.error(winston_messages.UUID_INCORRECT);
                 winston_logger.error(winston_messages.BAD_REQUEST);
 
-                res
+                return res
                     .status(400)
                     .send(createError(CommonErrorMessages.INVALID_USER_UUID));
             }
@@ -149,11 +143,9 @@ export class NotificationControllers extends CommonControllers<NotificationManag
             winston_logger.error(winston_messages.CATCH + error.message);
             winston_logger.error(winston_messages.ERROR);
 
-            res
+            return res
                 .status(404)
                 .send(createError(error.message));
         }
-
-        return res;
     };
 }
