@@ -12,6 +12,7 @@ export class CommonMiddleware {
         return async function(req:Request, res:Response, next:NextFunction) {
             winston_logger.info("COMMON_MIDDLEWARE: " + self.name);
             console.log(req.query.key, req.query.secret, req.query.token);
+            console.log(process.env.KEY, process.env.SECRET);
             if (req.query.key === process.env.KEY && req.query.secret === process.env.SECRET) {
                 if (req.query.token && req.query.token !== "undefined") {
                     const result = await fetch("http://localhost:3007/token/" + req.query.token + "/service/" + self.name, {
@@ -41,7 +42,7 @@ export class CommonMiddleware {
                     return res.status(401).send();
                 }
             } else {
-                return res.sendStatus(401).end();
+                return res.sendStatus(401).send();
             }
         }
     }
@@ -50,12 +51,20 @@ export class CommonMiddleware {
         const self = this;
         return async function(req:Request, res:Response, next:NextFunction) {
             winston_logger.info("COMMON_MIDDLEWARE: " + self.name);
-            if (/<(.*?)>/.exec(req.header('authorization'))[1] && req.params.id) {
-                console.log('check token...');
-                return await fetch("http://localhost:3007/user/"+req.params.id+"/token/"+req.params.token, {
+            const token = /<(.*?)>/.exec(req.header('authorization'))[1];
+            if (token && req.params.id) {
+                console.log('check token...', token);
+                const response = await fetch("http://localhost:3007/user/"+req.params.id+"/token/"+token, {
                     method: "get",
                     headers: {'Content-Type': 'application/json'}
-                }).then(() => next());
+                });
+
+                console.log(response.status, await response.json());
+                if (response.status === 200) {
+                    return next();
+                } else {
+                    return res.sendStatus(401).send();
+                }
             } else {
                 return res.status(401).send();
             }

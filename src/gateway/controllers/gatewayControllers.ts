@@ -567,7 +567,7 @@ export class GatewayControllers {
 
     public async setNotifySettings(req:Request, res:Response) {
         try {
-            const notify_response = await createNotify(req.body, notify_token).catch(() => {
+            const notify_response = await createNotify(req.params.id, req.body, notify_token).catch(() => {
                 notifyCirquitBreaker.upTry();
                 return res.status(503).send();
             });
@@ -576,7 +576,7 @@ export class GatewayControllers {
 
             if (notify_response.status === 449) {
                 notify_token = notifications.token;
-                const response2 = await createNotify(req.body, notify_token);
+                const response2 = await createNotify(req.params.id, req.body, notify_token);
                 const notify2 = await response2.json();
                 return res
                     .status(response2.status)
@@ -589,7 +589,7 @@ export class GatewayControllers {
                 });
                 const body_refresh = await result_refresh.json();
                 notify_token = body_refresh.token;
-                const response2 = await createNotify(req.body, notify_token);
+                const response2 = await createNotify(req.params.id, req.body, notify_token);
                 const notify2 = await response2.json();
                 return res
                     .status(response2.status)
