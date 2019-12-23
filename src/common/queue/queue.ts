@@ -46,19 +46,73 @@ class Queue {
         })
     }
 
-    //TODO: then response === 449 => + token & send again
-    private sendRequest(data:any):void {
-        fetch(data.url, {
+    private async sendRequest(data:any) {
+        if (this.name === "favs") {
+            let favs_token;
+            const result = await this.sendReq(data, process.env.favs_key, process.env.favs_secret, favs_token)
+                .catch(() => {
+                    this.push({url: data.url, method: data.method});
+                    favsCirquitBreaker.upTry();
+                });
+
+            const result_data = await result.json();
+            favs_token = result_data.token;
+            if (result.status === 449) {
+                await this.sendReq(data, process.env.favs_key, process.env.favs_secret, favs_token).catch(() => {
+                    this.push({url: data.url, method: data.method});
+                    favsCirquitBreaker.upTry();
+                });
+            }
+
+            if (result_data.message === "expired token") {
+                const result_refresh = await fetch("http://localhost:3007/token/" + favs_token + "/service/Favs", {
+                    method: "patch",
+                    headers: {'Content-Type': 'application/json'},
+                });
+                const body_refresh = await result_refresh.json();
+                favs_token = body_refresh.token;
+                await this.sendReq(data, process.env.favs_key, process.env.favs_secret, favs_token).catch(() => {
+                    this.push({url: data.url, method: data.method});
+                    favsCirquitBreaker.upTry();
+                });
+            }
+        }
+
+        if (this.name === "story") {
+            let story_token;
+            const result = await this.sendReq(data, process.env.story_key, process.env.story_secret, story_token).catch(() => {
+                this.push({url: data.url, method: data.method});
+                storyCirquitBreaker.upTry();
+            });
+
+            const result_data = await result.json();
+            story_token = result_data.token;
+            if (result.status === 449) {
+                await this.sendReq(data, process.env.story_key, process.env.story_secret, story_token).catch(() => {
+                    this.push({url: data.url, method: data.method});
+                    storyCirquitBreaker.upTry();
+                });
+            }
+
+            if (result_data.message === "expired token") {
+                const result_refresh = await fetch("http://localhost:3007/token/" + story_token + "/service/Story", {
+                    method: "patch",
+                    headers: {'Content-Type': 'application/json'},
+                });
+                const body_refresh = await result_refresh.json();
+                story_token = body_refresh.token;
+                await this.sendReq(data, process.env.story_key, process.env.story_secret, story_token).catch(() => {
+                    this.push({url: data.url, method: data.method});
+                    storyCirquitBreaker.upTry();
+                });
+            }
+        }
+    }
+
+    private sendReq(data, key, secret, token) {
+        return fetch(data.url + "?key=" + key + "&secret=" + secret + "&token=" + token, {
             method: data.method,
             headers: {'Content-Type': 'application/json'}
-        }).catch(() => {
-            this.push({url: data.url, method: data.method});
-            if (this.name === "story") {
-                storyCirquitBreaker.upTry();
-            }
-            if (this.name === "favs") {
-                favsCirquitBreaker.upTry();
-            }
         })
     }
 

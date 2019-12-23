@@ -2,7 +2,7 @@ import * as fetch from "node-fetch";
 
 export const updateNotify = (id, body, token) => {
     return fetch("http://localhost:3004/notifications/" + id +
-        "?key="+process.env.story_key +"&secret=" + process.env.story_secret+"&token="+token, {
+        "?key="+process.env.notify_key +"&secret=" + process.env.notify_secret+"&token="+token, {
         method: 'patch',
         body: JSON.stringify({
             ...body

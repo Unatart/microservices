@@ -285,80 +285,79 @@ export class GatewayControllers {
             let failed = false;
             winston_logger.info("DELETE /user/:id/stories/:story_id");
             winston_logger.info('delete story from favourites..');
-            const fav_resp = await deleteFavsByStory(req.params.story_id, favs_token).catch(() => {
-                q_favs.push({
-                    url: "http://localhost:3003/favourites/" + req.params.story_id,
-                    body: {
-                        key: process.env.favs_key,
-                        secret: process.env.favs_secret,
-                        token: favs_token
-                    },
-                    headers: {'Content-Type': 'application/json'},
-                    method: 'delete'
+            await deleteFavsByStory(req.params.story_id, favs_token)
+                .then(async (fav_resp) => {
+                    const fav = await fav_resp.json();
+                    if (fav_resp.status === 449) {
+                        favs_token = fav.token;
+                        await deleteFavsByStory(req.params.story_id, favs_token);
+                    }
+                    if (fav.message === "expired token") {
+                        const result_refresh = await fetch("http://localhost:3007/token/" + favs_token + "/service/Favs", {
+                            method: "patch",
+                            headers: {'Content-Type': 'application/json'},
+                        });
+                        const body_refresh = await result_refresh.json();
+                        favs_token = body_refresh.token;
+                        await deleteFavsByStory(req.params.story_id, favs_token);
+                    }
+                })
+                .catch(() => {
+                    q_favs.push({
+                        url: "http://localhost:3003/favourites/" + req.params.story_id,
+                        headers: {'Content-Type': 'application/json'},
+                        method: 'delete'
+                    });
+                    favsCirquitBreaker.upTry();
+                    failed = true;
+                    return Promise.resolve();
                 });
-                favsCirquitBreaker.upTry();
-                failed = true;
-                return Promise.resolve();
-            });
-
-            const fav = await fav_resp.json();
-            if (fav_resp.status === 449) {
-                favs_token = fav.token;
-                await deleteFavsByStory(req.params.story_id, favs_token);
-            }
-            if (fav.message === "expired token") {
-                const result_refresh = await fetch("http://localhost:3007/token/" + favs_token + "/service/Favs", {
-                    method: "patch",
-                    headers: {'Content-Type': 'application/json'},
-                });
-                const body_refresh = await result_refresh.json();
-                favs_token = body_refresh.token;
-                await deleteFavsByStory(req.params.story_id, favs_token);
-            }
 
             winston_logger.info('delete story...');
-            const story_response = await deleteStory(req.params.story_id, story_token).catch(() => {
-                q_story.push({
-                    url: "http://localhost:3002/stories/" + req.params.story_id,
-                    method: 'delete'
+            await deleteStory(req.params.story_id, story_token)
+                .then(async (story_response) => {
+                    const story = await story_response.json();
+
+                    if (story_response.status === 449) {
+                        story_token = story.token;
+                        const response2 = await deleteStory(req.params.story_id, story_token);
+                        const story2 = await response2.json();
+                        return res
+                            .status(response2.status)
+                            .send(story2);
+                    }
+                    if (story.message === "expired token") {
+                        const result_refresh = await fetch("http://localhost:3007/token/" + story_token + "/service/Story", {
+                            method: "patch",
+                            headers: {'Content-Type': 'application/json'},
+                        });
+                        const body_refresh = await result_refresh.json();
+                        story_token = body_refresh.token;
+                        const response2 = await deleteStory(req.params.story_id, story_token);
+                        const story2 = await response2.json();
+                        return res
+                            .status(response2.status)
+                            .send(story2);
+                    }
+                })
+                .catch(() => {
+                    q_story.push({
+                        url: "http://localhost:3002/stories/" + req.params.story_id,
+                        method: 'delete'
+                    });
+                    storyCirquitBreaker.upTry();
+                    failed = true;
+                    return Promise.resolve();
                 });
-                storyCirquitBreaker.upTry();
-                failed = true;
-                return Promise.resolve();
-            });
 
             if (failed) {
                 return res.status(200).send();
             }
 
-            const story = await story_response.json();
-
-            if (story_response.status === 449) {
-                story_token = story.token;
-                const response2 = await deleteStory(req.params.story_id, story_token);
-                const story2 = await response2.json();
-                return res
-                    .status(response2.status)
-                    .send(story2);
-            }
-            if (story.message === "expired token") {
-                const result_refresh = await fetch("http://localhost:3007/token/" + story_token + "/service/Story", {
-                    method: "patch",
-                    headers: {'Content-Type': 'application/json'},
-                });
-                const body_refresh = await result_refresh.json();
-                story_token = body_refresh.token;
-                const response2 = await deleteStory(req.params.story_id, story_token);
-                const story2 = await response2.json();
-                return res
-                    .status(response2.status)
-                    .send(story2);
-            }
-
             winston_logger.info(winston_messages.OK);
             return res
-                .status(story_response.status)
-                .send(story);
+                .status(200)
+                .send();
 
         } catch (error) {
             winston_logger.error(winston_messages.CATCH + error.message);
@@ -565,48 +564,6 @@ export class GatewayControllers {
         }
     }
 
-    public async setNotifySettings(req:Request, res:Response) {
-        try {
-            const notify_response = await createNotify(req.params.id, req.body, notify_token).catch(() => {
-                notifyCirquitBreaker.upTry();
-                return res.status(503).send();
-            });
-
-            const notifications = await notify_response.json();
-
-            if (notify_response.status === 449) {
-                notify_token = notifications.token;
-                const response2 = await createNotify(req.params.id, req.body, notify_token);
-                const notify2 = await response2.json();
-                return res
-                    .status(response2.status)
-                    .send(notify2);
-            }
-            if (notifications.message === "expired token") {
-                const result_refresh = await fetch("http://localhost:3007/token/" + notify_token + "/service/Notify", {
-                    method: "patch",
-                    headers: {'Content-Type': 'application/json'},
-                });
-                const body_refresh = await result_refresh.json();
-                notify_token = body_refresh.token;
-                const response2 = await createNotify(req.params.id, req.body, notify_token);
-                const notify2 = await response2.json();
-                return res
-                    .status(response2.status)
-                    .send(notify2);
-            }
-
-            return res
-                .status(200)
-                .send(notifications);
-
-        } catch (error) {
-            return res
-                .status(400)
-                .send(createError(error.message));
-        }
-    }
-
     public async updateNotifySettings(req: Request, res: Response) {
         try {
             winston_logger.info("PATCH /user/:id/notifications");
@@ -621,7 +578,7 @@ export class GatewayControllers {
             let body;
             if (user_response.status === 449) {
                 user_token = user_settings.token;
-                const retry_response = await updateUser(req.params.id, req.body, user_token);
+                const retry_response = await getUser(req.params.id, user_token);
                 body = await retry_response.json();
             }
             if (user_settings.message === "expired token") {
@@ -631,11 +588,13 @@ export class GatewayControllers {
                 });
                 const body_refresh = await result_refresh.json();
                 user_token = body_refresh.token;
-                const retry_response = await updateUser(req.params.id, req.body, user_token);
+                const retry_response = await getUser(req.params.id, user_token);
                 body = await retry_response.json();
             }
 
-            user_settings = body;
+            if (body) {
+                user_settings = body;
+            }
 
             if(!user_settings.email && !user_settings.phone) {
                 winston_logger.error('user don\'t have email or phone to enable notifications');

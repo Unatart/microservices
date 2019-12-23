@@ -56,7 +56,14 @@ export class SessionDBManager extends CommonDbManager<Session> {
         const res = await this.repository.findOne({where: {token: token, user_id: user_id}});
         const curr_d = new Date(this.createDate());
         const d = new Date(res["expires"]);
-        return curr_d.getTime() < d.getTime();
+        if (curr_d.getTime() < d.getTime()) {
+            await this.repository.merge(res, {
+                expires: this.createDate(true),
+            });
+            await this.repository.save(res);
+            return true;
+        }
+        return false;
     }
 
     public async updateTokenForUser(user_id:string) {
@@ -72,7 +79,7 @@ export class SessionDBManager extends CommonDbManager<Session> {
     }
 
     public async updateTokenForService(token:string, service_name:string) {
-        const session =  await this.repository.findOne({where: {token: token, service_name: service_name}});
+        const session =  await this.repository.findOne({where: {service_name: service_name}});
         if (session) {
             const token_gen = new TokenGen(256, TokenGen.BASE62);
             await this.repository.merge(session, {

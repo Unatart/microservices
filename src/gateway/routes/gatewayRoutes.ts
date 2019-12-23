@@ -15,6 +15,7 @@ const favsMiddleware = favsCirquitBreaker.middleware();
 
 const middleware = new CommonMiddleware("Gateway").outerMiddleware();
 
+
 export const routes = (app, controllers) => {
     app.get("/stories", storyMiddleware, controllers.getAllStories);
 
@@ -37,8 +38,6 @@ export const routes = (app, controllers) => {
     app.delete("/user/:id/stories/:story_id/favourites", middleware, favsMiddleware, controllers.deleteStoryFromFavUser);
 
     app.get("/user/:id/notifications", middleware, notifyMiddleware, controllers.getUserNotifySettings);
-
-    app.post("/user/:id/notifications", middleware, notifyMiddleware, controllers.setNotifySettings);
 
     app.patch("/user/:id/notifications", middleware, userMiddleware, notifyMiddleware, controllers.updateNotifySettings);
 };

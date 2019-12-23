@@ -21,8 +21,9 @@ export class CommonMiddleware {
                     });
 
                     if (result.status === 200) {
-                        next();
+                        return next();
                     } else {
+                        console.log('expired token');
                         return res
                             .status(401)
                             .send(JSON.stringify({message: 'expired token'}));

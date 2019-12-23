@@ -3,6 +3,7 @@ import {Notification} from "../entity/notification";
 
 export class NotificationManager extends CommonDbManager<Notification> {
     public async getNotify(user_uuid:string) {
+        await this.createNotify(user_uuid, false, false);
         return await this.repository.findOne({where: {user_id: user_uuid}});
     }
 
