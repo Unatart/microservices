@@ -24,7 +24,7 @@ export class SessionDBManager extends CommonDbManager<Session> {
     }
 
     public async createTokenForUser(user_id:string) {
-        const find_same = await this.repository.findOne({where: {user_id: user_id}});
+        const find_same = await this.repository.findOne({where: {user_id: user_id, code: null}});
         if (find_same) {
             await this.repository.merge(find_same, {
                 token: this.token_gen.generate(),
@@ -51,7 +51,7 @@ export class SessionDBManager extends CommonDbManager<Session> {
     }
 
     public async checkTokenForUser(token:string, user_id:string):Promise<boolean> {
-        const res = await this.repository.findOne({where: {token: token, user_id: user_id}});
+        const res = await this.repository.findOne({where: {token: token, user_id: user_id, code: null}});
         const curr_d = new Date(this.createDate());
         const d = new Date(res["expires"]);
         if (curr_d.getTime() < d.getTime()) {
@@ -72,7 +72,7 @@ export class SessionDBManager extends CommonDbManager<Session> {
     }
 
     public async updateTokenForUser(user_id:string) {
-        const session =  await this.repository.findOne({where: {user_id: user_id}});
+        const session =  await this.repository.findOne({where: {user_id: user_id, code: null}});
         if (session) {
             await this.repository.merge(session, {
                 token: this.token_gen.generate(),
@@ -93,16 +93,19 @@ export class SessionDBManager extends CommonDbManager<Session> {
         }
     }
 
-    public async createCode(user_id:string, app_id:string, app_secret:string) {
-        const session = {
-            user_id: user_id,
-            app_id: app_id,
-            app_secret: app_secret,
-            code: this.token_gen.generate()
-        };
+    public async createCode(user_id:string, app_id:string, app_secret:string, token:string) {
+        const find_one =  await this.repository.findOne({where: {user_id: user_id, token:token, code: null}});
+        if (find_one) {
+            const session = {
+                user_id: user_id,
+                app_id: app_id,
+                app_secret: app_secret,
+                code: this.token_gen.generate()
+            };
 
-        const session_res = await this.repository.create(session);
-        return await this.repository.save(session_res);
+            const session_res = await this.repository.create(session);
+            return await this.repository.save(session_res);
+        }
     }
 
     public async createTokenForCode(code:string, app_id:string, app_secret:string) {

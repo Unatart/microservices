@@ -122,11 +122,12 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
 
     public createCode = async (req:Request, res: Response) => {
         try  {
-            const client_id = req.query.client_id;
-            const client_secret = req.query.client_secret;
-            const user_id = req.query.user_id;
+            const client_id = req.body.client_id;
+            const client_secret = req.body.client_secret;
+            const user_id = req.body.user_id;
+            const token = /<(.*?)>/.exec(req.header('authorization'))[1];
 
-            const result = await this.db_manager.createCode(user_id, client_id, client_secret);
+            const result = await this.db_manager.createCode(user_id, client_id, client_secret, token);
 
             if (result) {
                 res
