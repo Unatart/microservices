@@ -28,7 +28,7 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
         } catch (error) {
             return res
                 .status(400)
-                .send();
+                .send(error.message);
         }
     };
 
@@ -51,7 +51,7 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
         } catch (error) {
             return res
                 .status(400)
-                .send();
+                .send(error.message);
         }
     };
 
@@ -73,7 +73,7 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
         } catch (error) {
             return res
                 .status(400)
-                .send();
+                .send(error.message);
         }
     };
 
@@ -94,7 +94,7 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
         } catch (error) {
             return res
                 .status(400)
-                .send();
+                .send(error.message);
         }
     };
 
@@ -116,7 +116,101 @@ export class SessionControllers extends CommonControllers<SessionDBManager> {
         } catch (error) {
             return res
                 .status(400)
-                .send();
+                .send(error.message);
         }
-    }
+    };
+
+    public createCode = async (req:Request, res: Response) => {
+        try  {
+            const client_id = req.query.client_id;
+            const client_secret = req.query.client_secret;
+            const user_id = req.query.user_id;
+
+            const result = await this.db_manager.createCode(user_id, client_id, client_secret);
+
+            if (result) {
+                res
+                    .status(200)
+                    .send(result);
+            } else {
+                res
+                    .status(401)
+                    .send(result);
+            }
+        } catch (error) {
+            return res
+                .status(400)
+                .send(error.message);
+        }
+    };
+
+    public createTokenForCode = async (req:Request, res:Response) => {
+        try {
+            const client_id = req.query.client_id;
+            const client_secret = req.query.client_secret;
+            const code = req.params.code;
+
+            const result = await this.db_manager.createTokenForCode(code, client_id, client_secret);
+
+            if (result) {
+                res
+                    .status(200)
+                    .send(result);
+            } else {
+                res
+                    .status(401)
+                    .send(result);
+            }
+        } catch (error) {
+            return res
+                .status(400)
+                .send(error.message)
+        }
+    };
+
+    public refreshTokenForCode = async (req:Request, res:Response) => {
+        try {
+            const client_id = req.query.client_id;
+            const client_secret = req.query.client_secret;
+            const refresh_token = req.params.refresh_token;
+
+            const result = await this.db_manager.refreshTokenForCode(client_id, client_secret, refresh_token);
+
+            if (result) {
+                res
+                    .status(200)
+                    .send(result);
+            } else {
+                res
+                    .status(401)
+                    .send(result);
+            }
+        } catch (error) {
+            return res
+                .status(400)
+                .send(error.message)
+        }
+    };
+
+    public checkTokenForCode = async (req:Request, res:Response) => {
+        try {
+            const token = req.query.token;
+            const user_id = req.query.user_id;
+            const result = await this.db_manager.checkTokenForCode(token, user_id);
+
+            if (result) {
+                res
+                    .status(200)
+                    .send(result);
+            } else {
+                res
+                    .status(401)
+                    .send(result);
+            }
+        } catch (error) {
+            return res
+                .status(400)
+                .send(error.message);
+        }
+    };
 }

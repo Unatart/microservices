@@ -6,7 +6,7 @@ import * as fetch from "node-fetch";
 
 export class AuthControllers extends CommonControllers<AuthDBManager> {
     public connectUser = async (req: Request, res: Response) => {
-        // try {
+        try {
             const name = req.body["name"];
             const password = req.body["password"];
             if (this.password_regex.test(password) && name) {
@@ -69,11 +69,68 @@ export class AuthControllers extends CommonControllers<AuthDBManager> {
                     .status(400)
                     .send(createError('Invalid password'));
             }
-        // } catch (error) {
-        //     return res
-        //         .status(400)
-        //         .send(createError(error.message));
-        // }
+        } catch (error) {
+            return res
+                .status(400)
+                .send(createError(error.message));
+        }
+    };
+
+    public createCode = async (req: Request, res: Response) => {
+        const client_id = req.query.client_id;
+        const client_secret = req.query.client_secret;
+        const user_id = req.query.user_id;
+
+        const response = await fetch("http://localhost:3007/code/?client_id="+client_id +"&client_secret="+client_secret+"&user_id="+user_id, {
+            method:"post",
+            headers: {'Content-Type': 'application/json'}
+        });
+
+        const body = await response.json();
+
+        return res
+            .status(response.status)
+            .send(body)
+    };
+
+    public getToken = async (req: Request, res: Response) => {
+        try {
+            const client_id = req.query.client_id;
+            const client_secret = req.query.client_secret;
+            const grant_type = req.query.grant_type;
+
+            if (grant_type === "auth_code") {
+                const code = req.query.code;
+                const response = await fetch("http://localhost:3007/code/" + code + "/?client_id=" + client_id + "&client_secret=" + client_secret, {
+                    method: "post",
+                    headers: {'Content-Type': 'application/json'}
+                });
+
+                const body = await response.json();
+
+                return res
+                    .status(response.status)
+                    .send(body)
+            }
+
+            if (grant_type === "refresh_token") {
+                const refresh_token = req.query.refresh_token;
+                const response = await fetch("http://localhost:3007/refresh_token/" + refresh_token + "?client_id=" + client_id + "&client_secret=" + client_secret, {
+                    method: "post",
+                    headers: {'Content-Type': 'application/json'}
+                });
+
+                const body = await response.json();
+
+                return res
+                    .status(response.status)
+                    .send(body)
+            }
+        } catch (error) {
+            return res
+                .status(400)
+                .send(error.message);
+        }
     };
 
     /**

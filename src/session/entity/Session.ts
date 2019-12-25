@@ -11,6 +11,15 @@ export class Session {
     @Column({nullable: true})
     service_name:string;
 
+    @Column({nullable:true})
+    app_id:string;
+
+    @Column({nullable:true})
+    app_secret:string;
+
+    @Column({nullable: true})
+    code:string;
+
     @Column()
     token:string;
 

@@ -55,10 +55,20 @@ export class CommonMiddleware {
             const token = /<(.*?)>/.exec(req.header('authorization'))[1];
             if (token && req.params.id) {
                 console.log('check token...', token);
-                const response = await fetch("http://localhost:3007/user/"+req.params.id+"/token/"+token, {
-                    method: "get",
-                    headers: {'Content-Type': 'application/json'}
-                });
+                let response;
+                if (req.query.app_id) {
+                    console.log('for app...');
+                    response = await fetch("http://localhost:3007/code/?"+req.params.id+"/token/"+token, {
+                        method: "get",
+                        headers: {'Content-Type': 'application/json'}
+                    });
+                } else {
+                    console.log('for user...');
+                    response = await fetch("http://localhost:3007/user/" + req.params.id + "/token/" + token, {
+                        method: "get",
+                        headers: {'Content-Type': 'application/json'}
+                    });
+                }
 
                 console.log(response.status, await response.json());
                 if (response.status === 200) {
