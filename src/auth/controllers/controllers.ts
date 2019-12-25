@@ -77,11 +77,12 @@ export class AuthControllers extends CommonControllers<AuthDBManager> {
     };
 
     public createCode = async (req: Request, res: Response) => {
-        const client_id = req.query.client_id;
-        const client_secret = req.query.client_secret;
-        const user_id = req.query.user_id;
+        const client_id = req.body.client_id;
+        const client_secret = req.body.client_secret;
+        const user_id = req.body.user_id;
+        const token = /<(.*?)>/.exec(req.header('authorization'))[1];
 
-        const response = await fetch("http://localhost:3007/code/?client_id="+client_id +"&client_secret="+client_secret+"&user_id="+user_id, {
+        const response = await fetch("http://localhost:3007/code/?client_id="+client_id +"&client_secret="+client_secret+"&user_id="+user_id+"&token="+token, {
             method:"post",
             headers: {'Content-Type': 'application/json'}
         });
