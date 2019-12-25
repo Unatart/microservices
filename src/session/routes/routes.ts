@@ -15,7 +15,7 @@ export const sessionRoutes = (app, controllers) => {
 
     app.post("/code", controllers.createCode);
 
-    app.post("/code/:code/token", controllers.createTokenForCode);
+    app.post("/code/:code/", controllers.createTokenForCode);
 
-    app.patch("/refresh_token/:refresh_token", controllers.refreshTokenForCode);
+    app.patch("/refresh_token/:refresh_token/", controllers.refreshTokenForCode);
 };

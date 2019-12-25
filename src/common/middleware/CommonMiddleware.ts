@@ -58,7 +58,7 @@ export class CommonMiddleware {
                 let response;
                 if (req.query.app_id) {
                     console.log('for app...');
-                    response = await fetch("http://localhost:3007/code/?"+req.params.id+"/token/"+token, {
+                    response = await fetch("http://localhost:3007/code/?user_id="+req.params.id+"&token="+token, {
                         method: "get",
                         headers: {'Content-Type': 'application/json'}
                     });

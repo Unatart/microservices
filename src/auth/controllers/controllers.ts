@@ -116,8 +116,8 @@ export class AuthControllers extends CommonControllers<AuthDBManager> {
 
             if (grant_type === "refresh_token") {
                 const refresh_token = req.query.refresh_token;
-                const response = await fetch("http://localhost:3007/refresh_token/" + refresh_token + "?client_id=" + client_id + "&client_secret=" + client_secret, {
-                    method: "post",
+                const response = await fetch("http://localhost:3007/refresh_token/" + refresh_token + "/?client_id=" + client_id + "&client_secret=" + client_secret, {
+                    method: "patch",
                     headers: {'Content-Type': 'application/json'}
                 });
 

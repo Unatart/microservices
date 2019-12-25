@@ -20,12 +20,12 @@ export class Session {
     @Column({nullable: true})
     code:string;
 
-    @Column()
+    @Column({nullable: true})
     token:string;
 
     @Column({nullable: true})
     refresh_token:string;
 
-    @Column()
+    @Column({nullable: true})
     expires:string;
 }
